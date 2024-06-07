@@ -403,3 +403,4 @@ _NCrunch_*
 *.crunch.xml
 nCrunchTemp_*
 *.ncrunchproject
+*.ncrunchsolution
