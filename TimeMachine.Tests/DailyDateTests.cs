@@ -1,5 +1,5 @@
 using FluentAssertions;
-using TimeMachine.Enums;
+using TimeMachine;
 
 namespace TimeMachine.Tests
 {

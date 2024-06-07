@@ -1,6 +1,4 @@
-﻿using TimeMachine.Enums;
-
-namespace TimeMachine
+﻿namespace TimeMachine
 {
     /// <summary>
     /// Interface for selecting a day of the month.

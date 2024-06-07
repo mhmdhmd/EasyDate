@@ -8,9 +8,28 @@
 - **Readable and Maintainable**: Improves code readability and maintainability, making it easier to understand and modify.
 - **Versatile**: Suitable for all parts of programming, particularly useful in unit tests.
 
-## Installation
+## Example Usage
 
-To install the TimeMachine package via NuGet, use the following command:
+Here's an example of how to use the **TimeMachine**:
 
-```sh
-dotnet add package TimeMachine
+```csharp
+using TimeMachine;
+
+var myBirthDay = GoTo
+    .Month(Months.Aug)
+    .OnDay(DayOfMonth.TwentyFourth)
+    .AtYear(1985)
+    .LetsGo();
+
+Console.WriteLine(myBirthDay); // 8/24/1985 12:00:00 AM
+
+var today = GoTo.Today();
+Console.WriteLine($"Today's date is: {today}"); // Today's date is: 6/8/2024 1:03:28 AM
+
+var lastDayOfJanuary = GoTo
+    .LastDay()
+    .InMonth(Months.Jan)
+    .AtYear(2024)
+    .LetsGo();
+
+Console.WriteLine($"Last day of Jan is: {lastDayOfJanuary}"); // Last day of Jan is: 1/31/2024 12:00:00 AM

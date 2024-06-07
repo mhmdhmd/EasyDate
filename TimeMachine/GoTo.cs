@@ -1,6 +1,4 @@
 ﻿using System;
-using TimeMachine.Enums;
-using TimeMachine.Exceptions;
 
 namespace TimeMachine
 {
@@ -65,7 +63,7 @@ namespace TimeMachine
         /// <param name="year">The year.</param>
         /// <returns>An instance of <see cref="YearlyDate"/> representing the specified year with the first month and first day.</returns>
         /// <exception cref="InvalidYearException">Thrown when the year is out of the valid range (1-9999).</exception>
-        public static YearlyDate Year(int year) => YearlyDate.Init(year); 
+        public static YearlyDate Year(int year) => YearlyDate.Init(year);
         #endregion
     }
 }

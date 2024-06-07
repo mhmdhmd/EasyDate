@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TimeMachine.Enums
+﻿namespace TimeMachine
 {
     public enum DayOfMonth
     {

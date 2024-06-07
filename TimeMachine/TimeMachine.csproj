@@ -2,6 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>hmdmhmd.TimeMachine</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>hmdmhmd</Authors>
+    <PackageTags>datetime; unit testing; fluent interface; date generation; time manipulation; date builder; testing tools; C#</PackageTags>
+    <Icon>icon.png</Icon>
+    <Title>TimeMachine</Title>
+    <Description>TimeMachine is a library for generating DateTime objects fluently in a highly readable and descriptive manner. It simplifies the creation of DateTime instances, enhancing code clarity and maintainability. This library is perfect for all programming scenarios, especially unit tests where readability is crucial.</Description>
+    <PackageProjectUrl>https://github.com/mhmdhmd/TimeMachine</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/mhmdhmd/TimeMachine</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icon.png" />
+    <None Remove="TimeMachine.v3.ncrunchproject" />
+  </ItemGroup>
 
 </Project>

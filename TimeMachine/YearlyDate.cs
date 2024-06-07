@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TimeMachine.Enums;
-using TimeMachine.Exceptions;
 
 namespace TimeMachine
 {
@@ -33,7 +29,7 @@ namespace TimeMachine
         {
             if (year < MinYear || year > MaxYear)
                 throw new InvalidYearException(year);
-            
+
             Year = year;
             MonthOfYear = Months.Jan;
             DayOfMonth = DayOfMonth.First;

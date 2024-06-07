@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimeMachine.Enums;
-using TimeMachine.Exceptions;
+using TimeMachine;
 
 namespace TimeMachine.Tests
 {

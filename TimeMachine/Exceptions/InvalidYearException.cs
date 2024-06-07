@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TimeMachine.Exceptions
+namespace TimeMachine
 {
     public class InvalidYearException : Exception
     {
