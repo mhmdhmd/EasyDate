@@ -402,3 +402,4 @@ FodyWeavers.xsd
 _NCrunch_*
 *.crunch.xml
 nCrunchTemp_*
+*.ncrunchproject
