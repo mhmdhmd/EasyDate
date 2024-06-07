@@ -19,6 +19,12 @@ namespace TimeMachine
 
         public static Month Init(Months months, DayOfMonth dayOfMonth) => new Month(months, dayOfMonth);
 
+        public Month OnDay(DayOfMonth dayOfMonth)
+        {
+            DayOfMonth = dayOfMonth;
+            return this;
+        }
+
         public Month AtYear(int year)
         {
             Year = year;
@@ -31,12 +37,6 @@ namespace TimeMachine
                 ? DateTime.DaysInMonth(Year, (int)MonthOfYear)
                 : (int)DayOfMonth;
             return new DateTime(Year, (int)MonthOfYear, day);
-        }
-
-        public Month OnDay(DayOfMonth dayOfMonth)
-        {
-            DayOfMonth = dayOfMonth;
-            return this;
         }
     }
 }
