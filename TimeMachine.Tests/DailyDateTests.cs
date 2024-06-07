@@ -3,7 +3,7 @@ using TimeMachine.Enums;
 
 namespace TimeMachine.Tests
 {
-    public class DayTests
+    public class DailyDateTests
     {
         [Fact]
         public void Init_Returns_DayInstance_WithCorrectDayOfMonth()
@@ -12,11 +12,11 @@ namespace TimeMachine.Tests
             var expectedDayOfMonth = DayOfMonth.First;
 
             // Act
-            var day = Day.Init(expectedDayOfMonth);
+            var day = DailyDate.Init(expectedDayOfMonth);
 
             // Assert
             day.Should().NotBeNull();
-            day.Should().BeOfType<Day>();
+            day.Should().BeOfType<DailyDate>();
             day.DayOfMonth.Should().Be(expectedDayOfMonth);
         }
 
@@ -25,7 +25,7 @@ namespace TimeMachine.Tests
         {
             // Arrange
             var expectedDayOfMonth = DayOfMonth.Tenth;
-            var day = Day.Init(expectedDayOfMonth);
+            var day = DailyDate.Init(expectedDayOfMonth);
             var expectedMonth = Months.Aug;
 
             // Act
@@ -33,7 +33,7 @@ namespace TimeMachine.Tests
 
             // Assert
             month.Should().NotBeNull();
-            month.Should().BeOfType<Month>();
+            month.Should().BeOfType<MonthlyDate>();
             month.MonthOfYear.Should().Be(expectedMonth);
             month.DayOfMonth.Should().Be(expectedDayOfMonth);
         }
@@ -43,7 +43,7 @@ namespace TimeMachine.Tests
         {
             // Arrange
             var expectedDayOfMonth = DayOfMonth.TwentyFifth;
-            var day = Day.Init(expectedDayOfMonth);
+            var day = DailyDate.Init(expectedDayOfMonth);
             var currentMonth = (Months)DateTime.Now.Month;
 
             // Act
@@ -51,7 +51,7 @@ namespace TimeMachine.Tests
 
             // Assert
             month.Should().NotBeNull();
-            month.Should().BeOfType<Month>();
+            month.Should().BeOfType<MonthlyDate>();
             month.MonthOfYear.Should().Be(currentMonth);
             month.DayOfMonth.Should().Be(expectedDayOfMonth);
         }

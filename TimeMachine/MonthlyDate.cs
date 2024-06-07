@@ -5,27 +5,27 @@ using TimeMachine.Enums;
 
 namespace TimeMachine
 {
-    public class Month : IDateTimeBuilder, IDaySelector<Month>
+    public class MonthlyDate : IDateTimeBuilder, IDaySelector<MonthlyDate>
     {
         public Months MonthOfYear { get; }
         public DayOfMonth DayOfMonth { get; private set; }
         public int Year { get; private set; }
-        private Month(Months monthOfYear, DayOfMonth dayOfMonth)
+        private MonthlyDate(Months monthOfYear, DayOfMonth dayOfMonth)
         {
             MonthOfYear = monthOfYear;
             DayOfMonth = dayOfMonth;
             Year = DateTime.Now.Year;
         }
 
-        public static Month Init(Months months, DayOfMonth dayOfMonth) => new Month(months, dayOfMonth);
+        public static MonthlyDate Init(Months months, DayOfMonth dayOfMonth) => new MonthlyDate(months, dayOfMonth);
 
-        public Month OnDay(DayOfMonth dayOfMonth)
+        public MonthlyDate OnDay(DayOfMonth dayOfMonth)
         {
             DayOfMonth = dayOfMonth;
             return this;
         }
 
-        public Month AtYear(int year)
+        public MonthlyDate AtYear(int year)
         {
             Year = year;
             return this;

@@ -7,21 +7,21 @@ namespace TimeMachine
 {
     public class GoTo
     {
-        #region Day
-        public static Day FirstDay() => Day.Init(DayOfMonth.First);
-        public static Day LastDay() => Day.Init(DayOfMonth.Last);
-        public static Day OnDay(DayOfMonth dayOfMonth) => Day.Init(dayOfMonth);
+        #region DailyDate
+        public static DailyDate FirstDay() => DailyDate.Init(DayOfMonth.First);
+        public static DailyDate LastDay() => DailyDate.Init(DayOfMonth.Last);
+        public static DailyDate Day(DayOfMonth dayOfMonth) => DailyDate.Init(dayOfMonth);
         public static DateTime Today() => DateTime.Now;
         #endregion
 
-        #region Month
-        public static Month FirstMonth() => Month.Init(Months.Jan, DayOfMonth.First);
-        public static Month LastMonth() => Month.Init(Months.Dec, DayOfMonth.First);
-        public static Month InMonth(Months months) => Month.Init(months, DayOfMonth.First);
+        #region MonthlyDate
+        public static MonthlyDate FirstMonth() => MonthlyDate.Init(Months.Jan, DayOfMonth.First);
+        public static MonthlyDate LastMonth() => MonthlyDate.Init(Months.Dec, DayOfMonth.First);
+        public static MonthlyDate Month(Months months) => MonthlyDate.Init(months, DayOfMonth.First);
         #endregion
 
-        #region Year
-        public static Year AtYear(int year) => Year.Init(year); 
+        #region YearlyDate
+        public static YearlyDate Year(int year) => YearlyDate.Init(year); 
         #endregion
     }
 }

@@ -8,7 +8,7 @@ using TimeMachine.Enums;
 
 namespace TimeMachine.Tests
 {
-    public class MonthTests
+    public class MonthlyDateTests
     {
         [Fact]
         public void Init_Returns_MonthInstance_WithCorrectMonthAndDay()
@@ -18,11 +18,11 @@ namespace TimeMachine.Tests
             var expectedDayOfMonth = DayOfMonth.Fifteenth;
 
             // Act
-            var month = Month.Init(expectedMonth, expectedDayOfMonth);
+            var month = MonthlyDate.Init(expectedMonth, expectedDayOfMonth);
 
             // Assert
             month.Should().NotBeNull();
-            month.Should().BeOfType<Month>();
+            month.Should().BeOfType<MonthlyDate>();
             month.MonthOfYear.Should().Be(expectedMonth);
             month.DayOfMonth.Should().Be(expectedDayOfMonth);
             month.Year.Should().Be(DateTime.Now.Year);
@@ -32,7 +32,7 @@ namespace TimeMachine.Tests
         public void AtYear_Sets_Year_Correctly()
         {
             // Arrange
-            var month = Month.Init(Months.Jan, DayOfMonth.First);
+            var month = MonthlyDate.Init(Months.Jan, DayOfMonth.First);
             var expectedYear = 2025;
 
             // Act
@@ -49,7 +49,7 @@ namespace TimeMachine.Tests
             var expectedYear = 2024;
             var expectedMonth = Months.Mar;
             var expectedDayOfMonth = DayOfMonth.Tenth;
-            var month = Month.Init(expectedMonth, expectedDayOfMonth).AtYear(expectedYear);
+            var month = MonthlyDate.Init(expectedMonth, expectedDayOfMonth).AtYear(expectedYear);
             var expectedDateTime = new DateTime(expectedYear, (int)expectedMonth, (int)expectedDayOfMonth);
 
             // Act
@@ -65,7 +65,7 @@ namespace TimeMachine.Tests
             // Arrange
             var expectedYear = 2024;
             var expectedMonth = Months.Feb;
-            var month = Month.Init(expectedMonth, DayOfMonth.Last).AtYear(expectedYear);
+            var month = MonthlyDate.Init(expectedMonth, DayOfMonth.Last).AtYear(expectedYear);
             var lastDayOfMonth = DateTime.DaysInMonth(expectedYear, (int)expectedMonth);
             var expectedDateTime = new DateTime(expectedYear, (int)expectedMonth, lastDayOfMonth);
 
@@ -80,7 +80,7 @@ namespace TimeMachine.Tests
         public void OnDay_Sets_DayOfMonth_Correctly()
         {
             // Arrange
-            var month = Month.Init(Months.Jul, DayOfMonth.First);
+            var month = MonthlyDate.Init(Months.Jul, DayOfMonth.First);
             var expectedDayOfMonth = DayOfMonth.Twentieth;
 
             // Act
