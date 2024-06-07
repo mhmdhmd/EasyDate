@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeMachine.Enums;
+using TimeMachine.Exceptions;
 
 namespace TimeMachine.Tests
 {
@@ -87,6 +88,19 @@ namespace TimeMachine.Tests
 
             // Assert
             dateTime.Should().Be(expectedDateTime);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(10000)]
+        public void Init_Throws_InvalidYearException_ForOutOfRangeYear(int year)
+        {
+            // Act
+            Action act = () => YearlyDate.Init(year);
+
+            // Assert
+            act.Should().Throw<InvalidYearException>()
+                .WithMessage($"The year {year} is out of the valid range (1-9999).");
         }
     }
 }

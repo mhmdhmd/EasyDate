@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeMachine.Enums;
+using TimeMachine.Exceptions;
 
 namespace TimeMachine.Tests
 {
@@ -88,6 +89,22 @@ namespace TimeMachine.Tests
 
             // Assert
             month.DayOfMonth.Should().Be(expectedDayOfMonth);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(10000)]
+        public void AtYear_Throws_InvalidYearException_ForOutOfRangeYear(int year)
+        {
+            // Arrange
+            var monthlyDate = MonthlyDate.Init(Months.May, DayOfMonth.Fifteenth);
+
+            // Act
+            Action act = () => monthlyDate.AtYear(year);
+
+            // Assert
+            act.Should().Throw<InvalidYearException>()
+                .WithMessage($"The year {year} is out of the valid range (1-9999).");
         }
     }
 }

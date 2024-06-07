@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using TimeMachine.Enums;
+using TimeMachine.Exceptions;
 
 namespace TimeMachine
 {
     public class MonthlyDate : IDateTimeBuilder, IDaySelector<MonthlyDate>
     {
+        private const int MinYear = 1;
+        private const int MaxYear = 9999;
+
         public Months MonthOfYear { get; }
         public DayOfMonth DayOfMonth { get; private set; }
         public int Year { get; private set; }
@@ -27,6 +31,9 @@ namespace TimeMachine
 
         public MonthlyDate AtYear(int year)
         {
+            if (year < MinYear || year > MaxYear)
+                throw new InvalidYearException(year);
+
             Year = year;
             return this;
         }
