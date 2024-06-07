@@ -5,6 +5,8 @@
 
 **TimeMachine** is a library for generating `DateTime` objects fluently in a highly readable and descriptive manner. It simplifies the creation of `DateTime` instances, enhancing code clarity and maintainability. This library is perfect for all programming scenarios, especially unit tests where readability is crucial.
 
+- [Nuget Package](https://www.nuget.org/packages/hmdmhmd.TimeMachine)
+
 ## Features
 
 - **Fluent and Descriptive**: Generate `DateTime` objects using a fluent interface that reads like natural language.
@@ -36,3 +38,17 @@ var lastDayOfJanuary = GoTo
     .LetsGo();
 
 Console.WriteLine($"Last day of Jan is: {lastDayOfJanuary}"); // Last day of Jan is: 1/31/2024 12:00:00 AM
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+- Fork the repository
+- Create a feature branch (`git checkout -b feature-branch`)
+- Commit your changes (`git commit -am 'Add new feature'`)
+- Push to the branch (`git push origin feature-branch`)
+- Create a new Pull Request
+
+Please make sure to update tests as appropriate.
