@@ -7,35 +7,35 @@ namespace TimeMachine
 {
     public class Month : IDateTimeBuilder, IDaySelector<Month>
     {
-        private readonly Months _month;
-        private DayOfMonth _dayOfMonth;
-        private int _year;
-        private Month(Months month, DayOfMonth dayOfMonth)
+        public Months MonthOfYear { get; }
+        public DayOfMonth DayOfMonth { get; private set; }
+        public int Year { get; private set; }
+        private Month(Months monthOfYear, DayOfMonth dayOfMonth)
         {
-            _month = month;
-            _dayOfMonth = dayOfMonth;
-            _year = DateTime.Now.Year;
+            MonthOfYear = monthOfYear;
+            DayOfMonth = dayOfMonth;
+            Year = DateTime.Now.Year;
         }
 
         public static Month Init(Months months, DayOfMonth dayOfMonth) => new Month(months, dayOfMonth);
 
         public Month AtYear(int year)
         {
-            _year = year;
+            Year = year;
             return this;
         }
 
         public DateTime LetsGo()
         {
-            var day = _dayOfMonth == DayOfMonth.Last
-                ? DateTime.DaysInMonth(_year, (int)_month)
-                : (int)_dayOfMonth;
-            return new DateTime(_year, (int)_month, day);
+            var day = DayOfMonth == DayOfMonth.Last
+                ? DateTime.DaysInMonth(Year, (int)MonthOfYear)
+                : (int)DayOfMonth;
+            return new DateTime(Year, (int)MonthOfYear, day);
         }
 
         public Month OnDay(DayOfMonth dayOfMonth)
         {
-            _dayOfMonth = dayOfMonth;
+            DayOfMonth = dayOfMonth;
             return this;
         }
     }

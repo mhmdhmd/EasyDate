@@ -7,15 +7,15 @@ namespace TimeMachine
 {
     public class Day
     {
-        private readonly DayOfMonth _dayOfMonth;
+        public DayOfMonth DayOfMonth { get; }
 
         private Day(DayOfMonth dayOfMonth)
         {
-            _dayOfMonth = dayOfMonth;
+            DayOfMonth = dayOfMonth;
         }
 
         public static Day Init(DayOfMonth dayOfMonth) => new Day(dayOfMonth);
-        public Month InMonth(Months month) => Month.Init(month, _dayOfMonth);
-        public Month InCurrentMonth() => Month.Init((Months)DateTime.Now.Month, _dayOfMonth);
+        public Month InMonth(Months month) => Month.Init(month, DayOfMonth);
+        public Month InCurrentMonth() => Month.Init((Months)DateTime.Now.Month, DayOfMonth);
     }
 }
