@@ -13,6 +13,8 @@
 - **Readable and Maintainable**: Improves code readability and maintainability, making it easier to understand and modify.
 - **Versatile**: Suitable for all programming parts, particularly useful in unit tests.
 
+> **_NOTE:_** the version `1.0.1` does not support `Time` components (hours, minutes, seconds) **yet**
+
 ## Example Usage
 
 Here's an example of how to use the **TimeMachine**:
