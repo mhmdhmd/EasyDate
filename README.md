@@ -1,7 +1,13 @@
-# TimeMachine
+<p align="center">
+    <a href="https://www.nuget.org/packages/hmdmhmd.TimeMachine" target="blank"><img src="https://github.com/mhmdhmd/TimeMachine/blob/master/TimeMachine/icon.png" width="64" alt="TimeMachine Logo" /></a>
+    <h1 align="center">TimeMachine</h1>
+</p>
 
-![NuGet](https://img.shields.io/nuget/v/hmdmhmd.TimeMachine)
-![NuGet](https://img.shields.io/nuget/dt/hmdmhmd.TimeMachine)
+<p align="center">
+<img alt="Version" src="https://img.shields.io/nuget/v/hmdmhmd.TimeMachine"/>
+<img alt="Download" src="https://img.shields.io/nuget/dt/hmdmhmd.TimeMachine"/>
+<img alt="Static Badge" src="https://img.shields.io/badge/license-MIT-orange"/>
+</p>
 
 **TimeMachine** is a library for generating `DateTime` objects fluently in a highly readable and descriptive manner. It simplifies the creation of `DateTime` instances, enhancing code clarity and maintainability. This library is perfect for all programming scenarios, especially unit tests where readability is crucial.
 
