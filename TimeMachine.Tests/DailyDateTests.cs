@@ -1,5 +1,4 @@
 using FluentAssertions;
-using TimeMachine;
 
 namespace TimeMachine.Tests
 {
