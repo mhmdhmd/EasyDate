@@ -19,7 +19,7 @@
 - **Readable and Maintainable**: Improves code readability and maintainability, making it easier to understand and modify.
 - **Versatile**: Suitable for all programming parts, particularly useful in unit tests.
 
-> **_NOTE:_** the version `1.0.1` does not support `Time` components (hours, minutes, seconds) **yet**
+> **_NOTE:_** the version `2.0.0` does not support `Time` components (hours, minutes, seconds) **yet**
 
 ## Example Usage
 
@@ -29,7 +29,7 @@ Here's an example of how to use the **TimeMachine**:
 using TimeMachine;
 
 var myBirthDay = GoTo
-    .Month(Months.Aug)
+    .Month(MonthOfYear.Aug)
     .OnDay(DayOfMonth.TwentyFourth)
     .AtYear(1985)
     .LetsGo();
@@ -41,7 +41,7 @@ Console.WriteLine($"Today's date is: {today}"); // Today's date is: 6/8/2024 1:0
 
 var lastDayOfJanuary = GoTo
     .LastDay()
-    .InMonth(Months.Jan)
+    .InMonth(MonthOfYear.Jan)
     .AtYear(2024)
     .LetsGo();
 

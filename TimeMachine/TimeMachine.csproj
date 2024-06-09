@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>hmdmhmd.TimeMachine</PackageId>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
     <Authors>hmdmhmd</Authors>
     <PackageTags>datetime; unit testing; fluent interface; date generation; time manipulation; date builder; testing tools; C#</PackageTags>
     <Icon>icon.png</Icon>

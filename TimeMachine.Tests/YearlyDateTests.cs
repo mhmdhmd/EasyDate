@@ -1,105 +1,154 @@
 ﻿using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeMachine;
 
 namespace TimeMachine.Tests
 {
     public class YearlyDateTests
     {
         [Fact]
-        public void Init_Returns_YearlyDateInstance_WithCorrectYear()
+        public void Init_ShouldCreateYearlyDate()
         {
             // Arrange
-            var expectedYear = 2024;
+            int year = 2023;
+            MonthOfYear month = MonthOfYear.Jan;
+            DayOfMonth day = DayOfMonth.First;
 
             // Act
-            var yearlyDate = YearlyDate.Init(expectedYear);
+            var yearlyDate = YearlyDate.Init(year, month, day);
 
             // Assert
-            yearlyDate.Should().NotBeNull();
-            yearlyDate.Should().BeOfType<YearlyDate>();
-            yearlyDate.Year.Should().Be(expectedYear);
-            yearlyDate.MonthOfYear.Should().Be(Months.Jan);
-            yearlyDate.DayOfMonth.Should().Be(DayOfMonth.First);
+            yearlyDate.Year.Should().Be(year);
+            yearlyDate.MonthOfYear.Should().Be(month);
+            yearlyDate.DayOfMonth.Should().Be(day);
         }
 
         [Fact]
-        public void InMonth_Sets_MonthOfYear_Correctly()
+        public void OnDay_ShouldSetDayOfMonth()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2024);
-            var expectedMonth = Months.May;
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            DayOfMonth newDay = DayOfMonth.Tenth;
 
             // Act
-            yearlyDate.InMonth(expectedMonth);
+            var updatedDate = yearlyDate.OnDay(newDay);
 
             // Assert
-            yearlyDate.MonthOfYear.Should().Be(expectedMonth);
+            updatedDate.DayOfMonth.Should().Be(newDay);
         }
 
         [Fact]
-        public void OnDay_Sets_DayOfMonth_Correctly()
+        public void InMonth_ShouldSetMonthOfYear()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2024);
-            var expectedDayOfMonth = DayOfMonth.Twentieth;
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            MonthOfYear newMonth = MonthOfYear.Dec;
 
             // Act
-            yearlyDate.OnDay(expectedDayOfMonth);
+            var updatedDate = yearlyDate.InMonth(newMonth);
 
             // Assert
-            yearlyDate.DayOfMonth.Should().Be(expectedDayOfMonth);
+            updatedDate.MonthOfYear.Should().Be(newMonth);
         }
 
         [Fact]
-        public void LetsGo_Returns_CorrectDateTime_ForSpecificDay()
+        public void YearsFromNow_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var expectedYear = 2024;
-            var expectedMonth = Months.Mar;
-            var expectedDayOfMonth = DayOfMonth.Tenth;
-            var yearlyDate = YearlyDate.Init(expectedYear).InMonth(expectedMonth).OnDay(expectedDayOfMonth);
-            var expectedDateTime = new DateTime(expectedYear, (int)expectedMonth, (int)expectedDayOfMonth);
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int years = 5;
+            var expectedDate = yearlyDate.LetsGo().AddYears(years);
 
             // Act
-            var dateTime = yearlyDate.LetsGo();
+            var newYearlyDate = yearlyDate.YearsFromNow(years);
 
             // Assert
-            dateTime.Should().Be(expectedDateTime);
+            newYearlyDate.Year.Should().Be(expectedDate.Year);
+            newYearlyDate.MonthOfYear.Should().Be(yearlyDate.MonthOfYear);
+            newYearlyDate.DayOfMonth.Should().Be(yearlyDate.DayOfMonth);
         }
 
         [Fact]
-        public void LetsGo_Returns_CorrectDateTime_ForLastDay()
+        public void YearsAgo_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var expectedYear = 2024;
-            var expectedMonth = Months.Feb;
-            var yearlyDate = YearlyDate.Init(expectedYear).InMonth(expectedMonth).OnDay(DayOfMonth.Last);
-            var lastDayOfMonth = DateTime.DaysInMonth(expectedYear, (int)expectedMonth);
-            var expectedDateTime = new DateTime(expectedYear, (int)expectedMonth, lastDayOfMonth);
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int years = 5;
+            var expectedDate = yearlyDate.LetsGo().AddYears(-years);
 
             // Act
-            var dateTime = yearlyDate.LetsGo();
+            var newYearlyDate = yearlyDate.YearsAgo(years);
 
             // Assert
-            dateTime.Should().Be(expectedDateTime);
+            newYearlyDate.Year.Should().Be(expectedDate.Year);
+            newYearlyDate.MonthOfYear.Should().Be(yearlyDate.MonthOfYear);
+            newYearlyDate.DayOfMonth.Should().Be(yearlyDate.DayOfMonth);
         }
 
-        [Theory]
-        [InlineData(0)]
-        [InlineData(10000)]
-        public void Init_Throws_InvalidYearException_ForOutOfRangeYear(int year)
+        [Fact]
+        public void DaysFromNow_ShouldReturnUpdatedYearlyDate()
         {
+            // Arrange
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int days = 10;
+            var expectedDate = yearlyDate.LetsGo().AddDays(days);
+
             // Act
-            Action act = () => YearlyDate.Init(year);
+            var newYearlyDate = yearlyDate.DaysFromNow(days);
 
             // Assert
-            act.Should().Throw<InvalidYearException>()
-                .WithMessage($"The year {year} is out of the valid range (1-9999).");
+            newYearlyDate.Year.Should().Be(expectedDate.Year);
+            newYearlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
+            newYearlyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+        }
+
+        [Fact]
+        public void DaysAgo_ShouldReturnUpdatedYearlyDate()
+        {
+            // Arrange
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int days = 10;
+            var expectedDate = yearlyDate.LetsGo().AddDays(-days);
+
+            // Act
+            var newYearlyDate = yearlyDate.DaysAgo(days);
+
+            // Assert
+            newYearlyDate.Year.Should().Be(expectedDate.Year);
+            newYearlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
+            newYearlyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+        }
+
+        [Fact]
+        public void MonthsFromNow_ShouldReturnUpdatedYearlyDate()
+        {
+            // Arrange
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int months = 5;
+            var expectedDate = yearlyDate.LetsGo().AddMonths(months);
+
+            // Act
+            var newYearlyDate = yearlyDate.MonthsFromNow(months);
+
+            // Assert
+            newYearlyDate.Year.Should().Be(expectedDate.Year);
+            newYearlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
+            newYearlyDate.DayOfMonth.Should().Be(yearlyDate.DayOfMonth);
+        }
+
+        [Fact]
+        public void MonthsAgo_ShouldReturnUpdatedYearlyDate()
+        {
+            // Arrange
+            var yearlyDate = YearlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int months = 5;
+            var expectedDate = yearlyDate.LetsGo().AddMonths(-months);
+
+            // Act
+            var newYearlyDate = yearlyDate.MonthsAgo(months);
+
+            // Assert
+            newYearlyDate.Year.Should().Be(expectedDate.Year);
+            newYearlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
+            newYearlyDate.DayOfMonth.Should().Be(yearlyDate.DayOfMonth);
         }
     }
 }

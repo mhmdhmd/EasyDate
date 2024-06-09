@@ -2,79 +2,37 @@
 
 namespace TimeMachine
 {
-    /// <summary>
-    /// Represents a date with a specified year, month, and day of the month.
-    /// </summary>
-    public class YearlyDate : IDateTimeBuilder, IDaySelector<YearlyDate>
+    public class YearlyDate : BaseDate
     {
-        private const int MinYear = 1;
-        private const int MaxYear = 9999;
-
-        /// <summary>
-        /// Gets the month of the year.
-        /// </summary>
-        public Months MonthOfYear { get; private set; }
-
-        /// <summary>
-        /// Gets the day of the month.
-        /// </summary>
-        public DayOfMonth DayOfMonth { get; private set; }
-
-        /// <summary>
-        /// Gets the year.
-        /// </summary>
-        public int Year { get; }
-
-        private YearlyDate(int year)
-        {
-            if (year < MinYear || year > MaxYear)
-                throw new InvalidYearException(year);
-
-            Year = year;
-            MonthOfYear = Months.Jan;
-            DayOfMonth = DayOfMonth.First;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="YearlyDate"/> class with the specified year.
-        /// </summary>
-        /// <param name="year">The year.</param>
-        /// <returns>A new instance of the <see cref="YearlyDate"/> class.</returns>
-        /// <exception cref="InvalidYearException">Thrown when the year is out of the valid range (1-9999).</exception>
-        public static YearlyDate Init(int year) => new YearlyDate(year);
-
-        /// <summary>
-        /// Sets the day of the month.
-        /// </summary>
-        /// <param name="dayOfMonth">The day of the month.</param>
-        /// <returns>An instance of <see cref="YearlyDate"/> with the specified day of the month.</returns>
+        private YearlyDate(int year, MonthOfYear month, DayOfMonth day) : base(year, month, day) { }
+        public static YearlyDate Init(int year, MonthOfYear month, DayOfMonth day) => new YearlyDate(year, month, day);
         public YearlyDate OnDay(DayOfMonth dayOfMonth)
         {
             DayOfMonth = dayOfMonth;
             return this;
         }
-
-        /// <summary>
-        /// Sets the month of the year.
-        /// </summary>
-        /// <param name="month">The month of the year.</param>
-        /// <returns>An instance of <see cref="YearlyDate"/> with the specified month of the year.</returns>
-        public YearlyDate InMonth(Months month)
+        public YearlyDate InMonth(MonthOfYear monthOfYear)
         {
-            MonthOfYear = month;
+            MonthOfYear = monthOfYear;
             return this;
         }
-
-        /// <summary>
-        /// Builds the <see cref="DateTime"/> object.
-        /// </summary>
-        /// <returns>A <see cref="DateTime"/> object representing the specified date.</returns>
-        public DateTime LetsGo()
+        public YearlyDate YearsFromNow(int years)
         {
-            var day = DayOfMonth == DayOfMonth.Last
-                ? DateTime.DaysInMonth(Year, (int)MonthOfYear)
-                : (int)DayOfMonth;
-            return new DateTime(Year, (int)MonthOfYear, day);
+            var newDate = LetsGo().AddYears(years);
+            return Init(newDate.Year, MonthOfYear, DayOfMonth);
         }
+        public YearlyDate YearsAgo(int years) => YearsFromNow(-years);
+        public YearlyDate DaysFromNow(int days)
+        {
+            var newDate = LetsGo().AddDays(days);
+            return Init(newDate.Year, (MonthOfYear)newDate.Month, (DayOfMonth)newDate.Day);
+        }
+        public YearlyDate DaysAgo(int days) => DaysFromNow(-days);
+        public YearlyDate MonthsFromNow(int months)
+        {
+            var newDate = LetsGo().AddMonths(months);
+            return Init(newDate.Year, (MonthOfYear)newDate.Month, DayOfMonth);
+        }
+        public YearlyDate MonthsAgo(int months) => MonthsFromNow(-months);
     }
 }

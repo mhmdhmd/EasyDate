@@ -396,6 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.idea
 
 # NCrunch
 *.ncrunch*.user
@@ -404,3 +405,5 @@ _NCrunch_*
 nCrunchTemp_*
 *.ncrunchproject
 *.ncrunchsolution
+/TimeMachine.Run/TimeMachine.Run.csproj
+/TimeMachine.Run/Program.cs
