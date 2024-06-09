@@ -5,54 +5,134 @@ namespace TimeMachine.Tests
     public class DailyDateTests
     {
         [Fact]
-        public void Init_Returns_DayInstance_WithCorrectDayOfMonth()
+        public void Init_ShouldCreateDailyDate()
         {
             // Arrange
-            var expectedDayOfMonth = DayOfMonth.First;
+            int year = 2023;
+            MonthOfYear month = MonthOfYear.Jan;
+            DayOfMonth day = DayOfMonth.First;
 
             // Act
-            var day = DailyDate.Init(expectedDayOfMonth);
+            var dailyDate = DailyDate.Init(year, month, day);
 
             // Assert
-            day.Should().NotBeNull();
-            day.Should().BeOfType<DailyDate>();
-            day.DayOfMonth.Should().Be(expectedDayOfMonth);
+            dailyDate.Year.Should().Be(year);
+            dailyDate.MonthOfYear.Should().Be(month);
+            dailyDate.DayOfMonth.Should().Be(day);
         }
 
         [Fact]
-        public void InMonth_Returns_MonthInstance_WithCorrectMonthAndDay()
+        public void InMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var expectedDayOfMonth = DayOfMonth.Tenth;
-            var day = DailyDate.Init(expectedDayOfMonth);
-            var expectedMonth = Months.Aug;
+            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            MonthOfYear newMonth = MonthOfYear.Feb;
 
             // Act
-            var month = day.InMonth(expectedMonth);
+            var monthlyDate = dailyDate.InMonth(newMonth);
 
             // Assert
-            month.Should().NotBeNull();
-            month.Should().BeOfType<MonthlyDate>();
-            month.MonthOfYear.Should().Be(expectedMonth);
-            month.DayOfMonth.Should().Be(expectedDayOfMonth);
+            monthlyDate.Year.Should().Be(dailyDate.Year);
+            monthlyDate.MonthOfYear.Should().Be(newMonth);
+            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
         }
 
         [Fact]
-        public void InCurrentMonth_Returns_MonthInstance_WithCorrectMonthAndDay()
+        public void InCurrentMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var expectedDayOfMonth = DayOfMonth.TwentyFifth;
-            var day = DailyDate.Init(expectedDayOfMonth);
-            var currentMonth = (Months)DateTime.Now.Month;
+            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var currentMonth = (MonthOfYear)DateTime.Now.Month;
 
             // Act
-            var month = day.InCurrentMonth();
+            var monthlyDate = dailyDate.InCurrentMonth();
 
             // Assert
-            month.Should().NotBeNull();
-            month.Should().BeOfType<MonthlyDate>();
-            month.MonthOfYear.Should().Be(currentMonth);
-            month.DayOfMonth.Should().Be(expectedDayOfMonth);
+            monthlyDate.Year.Should().Be(dailyDate.Year);
+            monthlyDate.MonthOfYear.Should().Be(currentMonth);
+            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+        }
+
+        [Fact]
+        public void InNextMonth_ShouldReturnMonthlyDate()
+        {
+            // Arrange
+            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var nextMonth = (MonthOfYear)DateTime.Now.AddMonths(1).Month;
+
+            // Act
+            var monthlyDate = dailyDate.InNextMonth();
+
+            // Assert
+            monthlyDate.Year.Should().Be(dailyDate.Year);
+            monthlyDate.MonthOfYear.Should().Be(nextMonth);
+            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+        }
+
+        [Fact]
+        public void InPrevMonth_ShouldReturnMonthlyDate()
+        {
+            // Arrange
+            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var prevMonth = (MonthOfYear)DateTime.Now.AddMonths(-1).Month;
+
+            // Act
+            var monthlyDate = dailyDate.InPrevMonth();
+
+            // Assert
+            monthlyDate.Year.Should().Be(dailyDate.Year);
+            monthlyDate.MonthOfYear.Should().Be(prevMonth);
+            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+        }
+
+        [Fact]
+        public void DaysFromNow_ShouldReturnDailyDateWithCorrectDate()
+        {
+            // Arrange
+            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int days = 10;
+            var expectedDate = dailyDate.LetsGo().AddDays(days);
+
+            // Act
+            var newDailyDate = dailyDate.DaysFromNow(days);
+
+            // Assert
+            newDailyDate.Year.Should().Be(expectedDate.Year);
+            newDailyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
+            newDailyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+        }
+
+        [Fact]
+        public void DaysAgo_ShouldReturnDailyDateWithCorrectDate()
+        {
+            // Arrange
+            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int days = 10;
+            var expectedDate = dailyDate.LetsGo().AddDays(-days);
+
+            // Act
+            var newDailyDate = dailyDate.DaysAgo(days);
+
+            // Assert
+            newDailyDate.Year.Should().Be(expectedDate.Year);
+            newDailyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
+            newDailyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+        }
+
+        [Fact]
+        public void InYear_ShouldReturnDailyDateWithNewYear()
+        {
+            // Arrange
+            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            int newYear = 2024;
+
+            // Act
+            var newDailyDate = dailyDate.InYear(newYear);
+
+            // Assert
+            newDailyDate.Year.Should().Be(newYear);
+            newDailyDate.MonthOfYear.Should().Be(dailyDate.MonthOfYear);
+            newDailyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
         }
     }
 }

@@ -32,7 +32,6 @@
         TwentyEighth,
         TwentyNinth,
         Thirtieth,
-        ThirtyFirst,
-        Last
+        ThirtyFirst
     }
 }

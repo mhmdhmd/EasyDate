@@ -5,104 +5,156 @@ namespace TimeMachine.Tests
     public class GoToTests
     {
         [Fact]
-        public void FirstDay_Returns_DailyDate_WithFirstDayOfMonth()
+        public void FirstDay_ShouldReturnFirstDayOfCurrentMonth()
         {
+            // Arrange
+            var now = DateTime.Now;
+
             // Act
-            var dailyDate = GoTo.FirstDay();
+            var result = GoTo.FirstDay();
 
             // Assert
-            dailyDate.Should().NotBeNull();
-            dailyDate.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Year.Should().Be(now.Year);
+            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
+            result.DayOfMonth.Should().Be(DayOfMonth.First);
         }
 
         [Fact]
-        public void LastDay_Returns_DailyDate_WithLastDayOfMonth()
+        public void LastDay_ShouldReturnLastDayOfCurrentMonth()
         {
+            // Arrange
+            var now = DateTime.Now;
+            var lastDay = DateTime.DaysInMonth(now.Year, now.Month);
+
             // Act
-            var dailyDate = GoTo.LastDay();
+            var result = GoTo.LastDay();
 
             // Assert
-            dailyDate.Should().NotBeNull();
-            dailyDate.DayOfMonth.Should().Be(DayOfMonth.Last);
-        }
-
-        [Theory]
-        [InlineData(DayOfMonth.First)]
-        [InlineData(DayOfMonth.Tenth)]
-        [InlineData(DayOfMonth.Last)]
-        public void Day_Returns_DailyDate_WithSpecifiedDayOfMonth(DayOfMonth dayOfMonth)
-        {
-            // Act
-            var dailyDate = GoTo.Day(dayOfMonth);
-
-            // Assert
-            dailyDate.Should().NotBeNull();
-            dailyDate.DayOfMonth.Should().Be(dayOfMonth);
+            result.Year.Should().Be(now.Year);
+            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
+            result.DayOfMonth.Should().Be((DayOfMonth)lastDay);
         }
 
         [Fact]
-        public void Today_Returns_CurrentDateTime()
+        public void Day_ShouldReturnSpecifiedDayOfCurrentMonth()
         {
+            // Arrange
+            var now = DateTime.Now;
+            var specifiedDay = DayOfMonth.Tenth;
+
             // Act
-            var today = GoTo.Today();
+            var result = GoTo.Day(specifiedDay);
 
             // Assert
-            today.Should().BeCloseTo(DateTime.Now, TimeSpan.FromSeconds(1));
+            result.Year.Should().Be(now.Year);
+            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
+            result.DayOfMonth.Should().Be(specifiedDay);
         }
 
         [Fact]
-        public void FirstMonth_Returns_MonthlyDate_WithFirstMonthAndFirstDay()
+        public void Today_ShouldReturnToday()
         {
+            // Arrange
+            var now = DateTime.Now;
+
             // Act
-            var monthlyDate = GoTo.FirstMonth();
+            var result = GoTo.Today();
 
             // Assert
-            monthlyDate.Should().NotBeNull();
-            monthlyDate.MonthOfYear.Should().Be(Months.Jan);
-            monthlyDate.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Year.Should().Be(now.Year);
+            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
+            result.DayOfMonth.Should().Be((DayOfMonth)now.Day);
         }
 
         [Fact]
-        public void LastMonth_Returns_MonthlyDate_WithLastMonthAndFirstDay()
+        public void Yesterday_ShouldReturnYesterday()
         {
+            // Arrange
+            var yesterday = DateTime.Now.AddDays(-1);
+
             // Act
-            var monthlyDate = GoTo.LastMonth();
+            var result = GoTo.Yesterday();
 
             // Assert
-            monthlyDate.Should().NotBeNull();
-            monthlyDate.MonthOfYear.Should().Be(Months.Dec);
-            monthlyDate.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Year.Should().Be(yesterday.Year);
+            result.MonthOfYear.Should().Be((MonthOfYear)yesterday.Month);
+            result.DayOfMonth.Should().Be((DayOfMonth)yesterday.Day);
         }
 
-        [Theory]
-        [InlineData(Months.Jan)]
-        [InlineData(Months.Jun)]
-        [InlineData(Months.Dec)]
-        public void Month_Returns_MonthlyDate_WithSpecifiedMonthAndFirstDay(Months month)
+        [Fact]
+        public void Tomorrow_ShouldReturnTomorrow()
         {
+            // Arrange
+            var tomorrow = DateTime.Now.AddDays(1);
+
             // Act
-            var monthlyDate = GoTo.Month(month);
+            var result = GoTo.Tomorrow();
 
             // Assert
-            monthlyDate.Should().NotBeNull();
-            monthlyDate.MonthOfYear.Should().Be(month);
-            monthlyDate.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Year.Should().Be(tomorrow.Year);
+            result.MonthOfYear.Should().Be((MonthOfYear)tomorrow.Month);
+            result.DayOfMonth.Should().Be((DayOfMonth)tomorrow.Day);
         }
 
-        [Theory]
-        [InlineData(2021)]
-        [InlineData(2022)]
-        [InlineData(2023)]
-        public void Year_Returns_YearlyDate_WithSpecifiedYear(int year)
+        [Fact]
+        public void FirstMonth_ShouldReturnFirstMonthOfCurrentYear()
         {
+            // Arrange
+            var now = DateTime.Now;
+
             // Act
-            var yearlyDate = GoTo.Year(year);
+            var result = GoTo.FirstMonth();
 
             // Assert
-            yearlyDate.Should().NotBeNull();
-            yearlyDate.Year.Should().Be(year);
-            yearlyDate.MonthOfYear.Should().Be(Months.Jan);
-            yearlyDate.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Year.Should().Be(now.Year);
+            result.MonthOfYear.Should().Be(MonthOfYear.Jan);
+            result.DayOfMonth.Should().Be(DayOfMonth.First);
+        }
+
+        [Fact]
+        public void LastMonth_ShouldReturnLastMonthOfCurrentYear()
+        {
+            // Arrange
+            var now = DateTime.Now;
+
+            // Act
+            var result = GoTo.LastMonth();
+
+            // Assert
+            result.Year.Should().Be(now.Year);
+            result.MonthOfYear.Should().Be(MonthOfYear.Dec);
+            result.DayOfMonth.Should().Be(DayOfMonth.First);
+        }
+
+        [Fact]
+        public void Month_ShouldReturnSpecifiedMonthOfCurrentYear()
+        {
+            // Arrange
+            var now = DateTime.Now;
+            var specifiedMonth = MonthOfYear.Jul;
+
+            // Act
+            var result = GoTo.Month(specifiedMonth);
+
+            // Assert
+            result.Year.Should().Be(now.Year);
+            result.MonthOfYear.Should().Be(specifiedMonth);
+            result.DayOfMonth.Should().Be(DayOfMonth.First);
+        }
+
+        [Fact]
+        public void Year_ShouldReturnFirstDayOfSpecifiedYear()
+        {
+            // Arrange
+            var specifiedYear = 2025;
+
+            // Act
+            var result = GoTo.Year(specifiedYear);
+
+            // Assert
+            result.Year.Should().Be(specifiedYear);
+            result.MonthOfYear.Should().Be(MonthOfYear.Jan);
+            result.DayOfMonth.Should().Be(DayOfMonth.First);
         }
     }
 }

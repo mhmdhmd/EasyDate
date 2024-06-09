@@ -2,39 +2,22 @@
 
 namespace TimeMachine
 {
-    /// <summary>
-    /// Represents a date with a specified day of the month.
-    /// </summary>
-    public class DailyDate
+    public class DailyDate : BaseDate
     {
-        /// <summary>
-        /// Gets the day of the month.
-        /// </summary>
-        public DayOfMonth DayOfMonth { get; }
+        private DailyDate(int year, MonthOfYear month, DayOfMonth day) : base(year, month, day) { }
 
-        private DailyDate(DayOfMonth dayOfMonth)
+        public static DailyDate Init(int year, MonthOfYear month, DayOfMonth day) => new DailyDate(year, month, day);
+
+        public MonthlyDate InMonth(MonthOfYear monthOfYear) => MonthlyDate.Init(Year, monthOfYear, DayOfMonth);
+        public MonthlyDate InCurrentMonth() => MonthlyDate.Init(Year, (MonthOfYear)DateTime.Now.Month, DayOfMonth);
+        public MonthlyDate InNextMonth() => MonthlyDate.Init(Year, (MonthOfYear)DateTime.Now.AddMonths(1).Month, DayOfMonth);
+        public MonthlyDate InPrevMonth() => MonthlyDate.Init(Year, (MonthOfYear)DateTime.Now.AddMonths(-1).Month, DayOfMonth);
+        public DailyDate DaysFromNow(int days)
         {
-            DayOfMonth = dayOfMonth;
+            var newDate = LetsGo().AddDays(days);
+            return Init(newDate.Year, (MonthOfYear)newDate.Month, (DayOfMonth)newDate.Day);
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DailyDate"/> class with the specified day of the month.
-        /// </summary>
-        /// <param name="dayOfMonth">The day of the month.</param>
-        /// <returns>A new instance of the <see cref="DailyDate"/> class.</returns>
-        public static DailyDate Init(DayOfMonth dayOfMonth) => new DailyDate(dayOfMonth);
-
-        /// <summary>
-        /// Sets the month of the date.
-        /// </summary>
-        /// <param name="month">The month.</param>
-        /// <returns>An instance of <see cref="MonthlyDate"/> with the specified month and current day of the month.</returns>
-        public MonthlyDate InMonth(Months month) => MonthlyDate.Init(month, DayOfMonth);
-
-        /// <summary>
-        /// Sets the current month of the date.
-        /// </summary>
-        /// <returns>An instance of <see cref="MonthlyDate"/> with the current month and current day of the month.</returns>
-        public MonthlyDate InCurrentMonth() => MonthlyDate.Init((Months)DateTime.Now.Month, DayOfMonth);
+        public DailyDate DaysAgo(int days) => DaysFromNow(-days);
+        public DailyDate InYear(int year) => Init(year, MonthOfYear, DayOfMonth);
     }
 }

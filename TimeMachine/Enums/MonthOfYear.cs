@@ -1,6 +1,6 @@
 ﻿namespace TimeMachine
 {
-    public enum Months
+    public enum MonthOfYear
     {
         Jan = 1,
         Feb,
