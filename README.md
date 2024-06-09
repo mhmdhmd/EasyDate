@@ -36,7 +36,7 @@ var myBirthDay = GoTo
 
 Console.WriteLine(myBirthDay); // 8/24/1985 12:00:00 AM
 
-var today = GoTo.Today();
+var today = GoTo.Today().LetsGo();
 Console.WriteLine($"Today's date is: {today}"); // Today's date is: 6/8/2024 1:03:28 AM
 
 var lastDayOfJanuary = GoTo
