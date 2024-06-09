@@ -10,7 +10,7 @@
 - **Readable and Maintainable**: Improves code readability and maintainability, making it easier to understand and modify.
 - **Versatile**: Suitable for all programming parts, particularly useful in unit tests.
 
-> **_NOTE:_** the version `2.0.0` does not support `Time` components (hours, minutes, seconds) **yet**
+> **_NOTE:_** the version `2.0.1` does not support `Time` components (hours, minutes, seconds) **yet**
 
 ## Example Usage
 
