@@ -4,34 +4,34 @@ namespace TimeMachine
 {
     public class YearlyDate : BaseDate
     {
-        private YearlyDate(int year, MonthOfYear month, DayOfMonth day) : base(year, month, day) { }
-        public static YearlyDate Init(int year, MonthOfYear month, DayOfMonth day) => new YearlyDate(year, month, day);
-        public YearlyDate OnDay(DayOfMonth dayOfMonth)
+        private YearlyDate(int year, Month month, Day day) : base(year, month, day) { }
+        public static YearlyDate Init(int year, Month month, Day day) => new YearlyDate(year, month, day);
+        public YearlyDate OnDay(Day day)
         {
-            DayOfMonth = dayOfMonth;
+            Day = day;
             return this;
         }
-        public YearlyDate InMonth(MonthOfYear monthOfYear)
+        public YearlyDate InMonth(Month month)
         {
-            MonthOfYear = monthOfYear;
+            Month = month;
             return this;
         }
         public YearlyDate YearsFromNow(int years)
         {
             var newDate = LetsGo().AddYears(years);
-            return Init(newDate.Year, MonthOfYear, DayOfMonth);
+            return Init(newDate.Year, Month, Day);
         }
         public YearlyDate YearsAgo(int years) => YearsFromNow(-years);
         public YearlyDate DaysFromNow(int days)
         {
             var newDate = LetsGo().AddDays(days);
-            return Init(newDate.Year, (MonthOfYear)newDate.Month, (DayOfMonth)newDate.Day);
+            return Init(newDate.Year, (Month)newDate.Month, (Day)newDate.Day);
         }
         public YearlyDate DaysAgo(int days) => DaysFromNow(-days);
         public YearlyDate MonthsFromNow(int months)
         {
             var newDate = LetsGo().AddMonths(months);
-            return Init(newDate.Year, (MonthOfYear)newDate.Month, DayOfMonth);
+            return Init(newDate.Year, (Month)newDate.Month, Day);
         }
         public YearlyDate MonthsAgo(int months) => MonthsFromNow(-months);
     }

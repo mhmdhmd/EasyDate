@@ -5,8 +5,8 @@ namespace TimeMachine
     public interface IDate
     {
         int Year { get; }
-        MonthOfYear MonthOfYear { get; }
-        DayOfMonth DayOfMonth { get; }
+        Month Month { get; }
+        Day Day { get; }
         DateTime LetsGo();
     }
 }

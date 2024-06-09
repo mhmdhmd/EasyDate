@@ -4,20 +4,20 @@ namespace TimeMachine
 {
     public class DailyDate : BaseDate
     {
-        private DailyDate(int year, MonthOfYear month, DayOfMonth day) : base(year, month, day) { }
+        private DailyDate(int year, Month month, Day day) : base(year, month, day) { }
 
-        public static DailyDate Init(int year, MonthOfYear month, DayOfMonth day) => new DailyDate(year, month, day);
+        public static DailyDate Init(int year, Month month, Day day) => new DailyDate(year, month, day);
 
-        public MonthlyDate InMonth(MonthOfYear monthOfYear) => MonthlyDate.Init(Year, monthOfYear, DayOfMonth);
-        public MonthlyDate InCurrentMonth() => MonthlyDate.Init(Year, (MonthOfYear)DateTime.Now.Month, DayOfMonth);
-        public MonthlyDate InNextMonth() => MonthlyDate.Init(Year, (MonthOfYear)DateTime.Now.AddMonths(1).Month, DayOfMonth);
-        public MonthlyDate InPrevMonth() => MonthlyDate.Init(Year, (MonthOfYear)DateTime.Now.AddMonths(-1).Month, DayOfMonth);
+        public MonthlyDate InMonth(Month month) => MonthlyDate.Init(Year, month, Day);
+        public MonthlyDate InCurrentMonth() => MonthlyDate.Init(Year, (Month)DateTime.Now.Month, Day);
+        public MonthlyDate InNextMonth() => MonthlyDate.Init(Year, (Month)DateTime.Now.AddMonths(1).Month, Day);
+        public MonthlyDate InPrevMonth() => MonthlyDate.Init(Year, (Month)DateTime.Now.AddMonths(-1).Month, Day);
         public DailyDate DaysFromNow(int days)
         {
             var newDate = LetsGo().AddDays(days);
-            return Init(newDate.Year, (MonthOfYear)newDate.Month, (DayOfMonth)newDate.Day);
+            return Init(newDate.Year, (Month)newDate.Month, (Day)newDate.Day);
         }
         public DailyDate DaysAgo(int days) => DaysFromNow(-days);
-        public DailyDate InYear(int year) => Init(year, MonthOfYear, DayOfMonth);
+        public DailyDate InYear(int year) => Init(year, Month, Day);
     }
 }

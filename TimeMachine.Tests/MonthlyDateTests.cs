@@ -9,37 +9,37 @@ namespace TimeMachine.Tests
         {
             // Arrange
             int year = 2023;
-            MonthOfYear month = MonthOfYear.Jan;
-            DayOfMonth day = DayOfMonth.First;
+            Month month = Month.Jan;
+            Day day = Day.First;
 
             // Act
             var monthlyDate = MonthlyDate.Init(year, month, day);
 
             // Assert
             monthlyDate.Year.Should().Be(year);
-            monthlyDate.MonthOfYear.Should().Be(month);
-            monthlyDate.DayOfMonth.Should().Be(day);
+            monthlyDate.Month.Should().Be(month);
+            monthlyDate.Day.Should().Be(day);
         }
 
         [Fact]
         public void OnDay_ShouldSetDayOfMonth()
         {
             // Arrange
-            var monthlyDate = MonthlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
-            DayOfMonth newDay = DayOfMonth.Tenth;
+            var monthlyDate = MonthlyDate.Init(2023, Month.Jan, Day.First);
+            Day newDay = Day.Tenth;
 
             // Act
             var updatedDate = monthlyDate.OnDay(newDay);
 
             // Assert
-            updatedDate.DayOfMonth.Should().Be(newDay);
+            updatedDate.Day.Should().Be(newDay);
         }
 
         [Fact]
         public void AtYear_ShouldSetYear()
         {
             // Arrange
-            var monthlyDate = MonthlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var monthlyDate = MonthlyDate.Init(2023, Month.Jan, Day.First);
             int newYear = 2024;
 
             // Act
@@ -53,7 +53,7 @@ namespace TimeMachine.Tests
         public void MonthsFromNow_ShouldReturnUpdatedMonthlyDate()
         {
             // Arrange
-            var monthlyDate = MonthlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var monthlyDate = MonthlyDate.Init(2023, Month.Jan, Day.First);
             int months = 5;
             var expectedDate = monthlyDate.LetsGo().AddMonths(months);
 
@@ -62,15 +62,15 @@ namespace TimeMachine.Tests
 
             // Assert
             newMonthlyDate.Year.Should().Be(expectedDate.Year);
-            newMonthlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
-            newMonthlyDate.DayOfMonth.Should().Be(monthlyDate.DayOfMonth);
+            newMonthlyDate.Month.Should().Be((Month)expectedDate.Month);
+            newMonthlyDate.Day.Should().Be(monthlyDate.Day);
         }
 
         [Fact]
         public void MonthsAgo_ShouldReturnUpdatedMonthlyDate()
         {
             // Arrange
-            var monthlyDate = MonthlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var monthlyDate = MonthlyDate.Init(2023, Month.Jan, Day.First);
             int months = 5;
             var expectedDate = monthlyDate.LetsGo().AddMonths(-months);
 
@@ -79,31 +79,31 @@ namespace TimeMachine.Tests
 
             // Assert
             newMonthlyDate.Year.Should().Be(expectedDate.Year);
-            newMonthlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
-            newMonthlyDate.DayOfMonth.Should().Be(monthlyDate.DayOfMonth);
+            newMonthlyDate.Month.Should().Be((Month)expectedDate.Month);
+            newMonthlyDate.Day.Should().Be(monthlyDate.Day);
         }
 
         [Fact]
         public void InMonth_ShouldReturnUpdatedMonthlyDate()
         {
             // Arrange
-            var monthlyDate = MonthlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
-            MonthOfYear newMonth = MonthOfYear.Dec;
+            var monthlyDate = MonthlyDate.Init(2023, Month.Jan, Day.First);
+            Month newMonth = Month.Dec;
 
             // Act
             var newMonthlyDate = monthlyDate.InMonth(newMonth);
 
             // Assert
             newMonthlyDate.Year.Should().Be(monthlyDate.Year);
-            newMonthlyDate.MonthOfYear.Should().Be(newMonth);
-            newMonthlyDate.DayOfMonth.Should().Be(monthlyDate.DayOfMonth);
+            newMonthlyDate.Month.Should().Be(newMonth);
+            newMonthlyDate.Day.Should().Be(monthlyDate.Day);
         }
 
         [Fact]
         public void DaysFromNow_ShouldReturnUpdatedMonthlyDate()
         {
             // Arrange
-            var monthlyDate = MonthlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var monthlyDate = MonthlyDate.Init(2023, Month.Jan, Day.First);
             int days = 10;
             var expectedDate = monthlyDate.LetsGo().AddDays(days);
 
@@ -112,15 +112,15 @@ namespace TimeMachine.Tests
 
             // Assert
             newMonthlyDate.Year.Should().Be(expectedDate.Year);
-            newMonthlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
-            newMonthlyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+            newMonthlyDate.Month.Should().Be((Month)expectedDate.Month);
+            newMonthlyDate.Day.Should().Be((Day)expectedDate.Day);
         }
 
         [Fact]
         public void DaysAgo_ShouldReturnUpdatedMonthlyDate()
         {
             // Arrange
-            var monthlyDate = MonthlyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var monthlyDate = MonthlyDate.Init(2023, Month.Jan, Day.First);
             int days = 10;
             var expectedDate = monthlyDate.LetsGo().AddDays(-days);
 
@@ -129,8 +129,8 @@ namespace TimeMachine.Tests
 
             // Assert
             newMonthlyDate.Year.Should().Be(expectedDate.Year);
-            newMonthlyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
-            newMonthlyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+            newMonthlyDate.Month.Should().Be((Month)expectedDate.Month);
+            newMonthlyDate.Day.Should().Be((Day)expectedDate.Day);
         }
     }
 }

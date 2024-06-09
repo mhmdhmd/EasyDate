@@ -1,6 +1,6 @@
 ﻿namespace TimeMachine
 {
-    public enum DayOfMonth
+    public enum Day
     {
         First = 1,
         Second,

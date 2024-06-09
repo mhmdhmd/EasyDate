@@ -11,7 +11,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2024, 5, 15);
 
             // Act
-            var dateTime = GoTo.Day(DayOfMonth.Fifteenth).InMonth(MonthOfYear.May).LetsGo();
+            var dateTime = GoTo.Day(Day.Fifteenth).InMonth(Month.May).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -25,7 +25,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(now.Year, now.Month, 10);
 
             // Act
-            var dateTime = GoTo.Day(DayOfMonth.Tenth).InCurrentMonth().LetsGo();
+            var dateTime = GoTo.Day(Day.Tenth).InCurrentMonth().LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -38,7 +38,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2023, 11, 5);
 
             // Act
-            var dateTime = GoTo.Year(2023).InMonth(MonthOfYear.Nov).OnDay(DayOfMonth.Fifth).LetsGo();
+            var dateTime = GoTo.Year(2023).InMonth(Month.Nov).OnDay(Day.Fifth).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -51,7 +51,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2024, 2, 29); // Leap year
 
             // Act
-            var dateTime = GoTo.Year(2024).InMonth(MonthOfYear.Feb).OnDay(DayOfMonth.TwentyNinth).LetsGo();
+            var dateTime = GoTo.Year(2024).InMonth(Month.Feb).OnDay(Day.TwentyNinth).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -64,7 +64,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2022, 3, 1);
 
             // Act
-            var dateTime = GoTo.Year(2022).InMonth(MonthOfYear.Mar).OnDay(DayOfMonth.First).LetsGo();
+            var dateTime = GoTo.Year(2022).InMonth(Month.Mar).OnDay(Day.First).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -78,7 +78,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2024, now.Month, now.Day);
 
             // Act
-            var dateTime = GoTo.Year(2024).InMonth((MonthOfYear)now.Month).OnDay((DayOfMonth)now.Day).LetsGo();
+            var dateTime = GoTo.Year(2024).InMonth((Month)now.Month).OnDay((Day)now.Day).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);

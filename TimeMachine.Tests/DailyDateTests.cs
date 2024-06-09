@@ -9,87 +9,87 @@ namespace TimeMachine.Tests
         {
             // Arrange
             int year = 2023;
-            MonthOfYear month = MonthOfYear.Jan;
-            DayOfMonth day = DayOfMonth.First;
+            Month month = Month.Jan;
+            Day day = Day.First;
 
             // Act
             var dailyDate = DailyDate.Init(year, month, day);
 
             // Assert
             dailyDate.Year.Should().Be(year);
-            dailyDate.MonthOfYear.Should().Be(month);
-            dailyDate.DayOfMonth.Should().Be(day);
+            dailyDate.Month.Should().Be(month);
+            dailyDate.Day.Should().Be(day);
         }
 
         [Fact]
         public void InMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
-            MonthOfYear newMonth = MonthOfYear.Feb;
+            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
+            Month newMonth = Month.Feb;
 
             // Act
             var monthlyDate = dailyDate.InMonth(newMonth);
 
             // Assert
             monthlyDate.Year.Should().Be(dailyDate.Year);
-            monthlyDate.MonthOfYear.Should().Be(newMonth);
-            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+            monthlyDate.Month.Should().Be(newMonth);
+            monthlyDate.Day.Should().Be(dailyDate.Day);
         }
 
         [Fact]
         public void InCurrentMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
-            var currentMonth = (MonthOfYear)DateTime.Now.Month;
+            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
+            var currentMonth = (Month)DateTime.Now.Month;
 
             // Act
             var monthlyDate = dailyDate.InCurrentMonth();
 
             // Assert
             monthlyDate.Year.Should().Be(dailyDate.Year);
-            monthlyDate.MonthOfYear.Should().Be(currentMonth);
-            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+            monthlyDate.Month.Should().Be(currentMonth);
+            monthlyDate.Day.Should().Be(dailyDate.Day);
         }
 
         [Fact]
         public void InNextMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
-            var nextMonth = (MonthOfYear)DateTime.Now.AddMonths(1).Month;
+            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
+            var nextMonth = (Month)DateTime.Now.AddMonths(1).Month;
 
             // Act
             var monthlyDate = dailyDate.InNextMonth();
 
             // Assert
             monthlyDate.Year.Should().Be(dailyDate.Year);
-            monthlyDate.MonthOfYear.Should().Be(nextMonth);
-            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+            monthlyDate.Month.Should().Be(nextMonth);
+            monthlyDate.Day.Should().Be(dailyDate.Day);
         }
 
         [Fact]
         public void InPrevMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
-            var prevMonth = (MonthOfYear)DateTime.Now.AddMonths(-1).Month;
+            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
+            var prevMonth = (Month)DateTime.Now.AddMonths(-1).Month;
 
             // Act
             var monthlyDate = dailyDate.InPrevMonth();
 
             // Assert
             monthlyDate.Year.Should().Be(dailyDate.Year);
-            monthlyDate.MonthOfYear.Should().Be(prevMonth);
-            monthlyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+            monthlyDate.Month.Should().Be(prevMonth);
+            monthlyDate.Day.Should().Be(dailyDate.Day);
         }
 
         [Fact]
         public void DaysFromNow_ShouldReturnDailyDateWithCorrectDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
             int days = 10;
             var expectedDate = dailyDate.LetsGo().AddDays(days);
 
@@ -98,15 +98,15 @@ namespace TimeMachine.Tests
 
             // Assert
             newDailyDate.Year.Should().Be(expectedDate.Year);
-            newDailyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
-            newDailyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+            newDailyDate.Month.Should().Be((Month)expectedDate.Month);
+            newDailyDate.Day.Should().Be((Day)expectedDate.Day);
         }
 
         [Fact]
         public void DaysAgo_ShouldReturnDailyDateWithCorrectDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
             int days = 10;
             var expectedDate = dailyDate.LetsGo().AddDays(-days);
 
@@ -115,15 +115,15 @@ namespace TimeMachine.Tests
 
             // Assert
             newDailyDate.Year.Should().Be(expectedDate.Year);
-            newDailyDate.MonthOfYear.Should().Be((MonthOfYear)expectedDate.Month);
-            newDailyDate.DayOfMonth.Should().Be((DayOfMonth)expectedDate.Day);
+            newDailyDate.Month.Should().Be((Month)expectedDate.Month);
+            newDailyDate.Day.Should().Be((Day)expectedDate.Day);
         }
 
         [Fact]
         public void InYear_ShouldReturnDailyDateWithNewYear()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, MonthOfYear.Jan, DayOfMonth.First);
+            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
             int newYear = 2024;
 
             // Act
@@ -131,8 +131,8 @@ namespace TimeMachine.Tests
 
             // Assert
             newDailyDate.Year.Should().Be(newYear);
-            newDailyDate.MonthOfYear.Should().Be(dailyDate.MonthOfYear);
-            newDailyDate.DayOfMonth.Should().Be(dailyDate.DayOfMonth);
+            newDailyDate.Month.Should().Be(dailyDate.Month);
+            newDailyDate.Day.Should().Be(dailyDate.Day);
         }
     }
 }

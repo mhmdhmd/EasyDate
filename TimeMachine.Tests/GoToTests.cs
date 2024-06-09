@@ -15,8 +15,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
-            result.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Month.Should().Be((Month)now.Month);
+            result.Day.Should().Be(Day.First);
         }
 
         [Fact]
@@ -31,8 +31,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
-            result.DayOfMonth.Should().Be((DayOfMonth)lastDay);
+            result.Month.Should().Be((Month)now.Month);
+            result.Day.Should().Be((Day)lastDay);
         }
 
         [Fact]
@@ -40,15 +40,15 @@ namespace TimeMachine.Tests
         {
             // Arrange
             var now = DateTime.Now;
-            var specifiedDay = DayOfMonth.Tenth;
+            var specifiedDay = Day.Tenth;
 
             // Act
             var result = GoTo.Day(specifiedDay);
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
-            result.DayOfMonth.Should().Be(specifiedDay);
+            result.Month.Should().Be((Month)now.Month);
+            result.Day.Should().Be(specifiedDay);
         }
 
         [Fact]
@@ -62,8 +62,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.MonthOfYear.Should().Be((MonthOfYear)now.Month);
-            result.DayOfMonth.Should().Be((DayOfMonth)now.Day);
+            result.Month.Should().Be((Month)now.Month);
+            result.Day.Should().Be((Day)now.Day);
         }
 
         [Fact]
@@ -77,8 +77,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(yesterday.Year);
-            result.MonthOfYear.Should().Be((MonthOfYear)yesterday.Month);
-            result.DayOfMonth.Should().Be((DayOfMonth)yesterday.Day);
+            result.Month.Should().Be((Month)yesterday.Month);
+            result.Day.Should().Be((Day)yesterday.Day);
         }
 
         [Fact]
@@ -92,8 +92,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(tomorrow.Year);
-            result.MonthOfYear.Should().Be((MonthOfYear)tomorrow.Month);
-            result.DayOfMonth.Should().Be((DayOfMonth)tomorrow.Day);
+            result.Month.Should().Be((Month)tomorrow.Month);
+            result.Day.Should().Be((Day)tomorrow.Day);
         }
 
         [Fact]
@@ -107,8 +107,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.MonthOfYear.Should().Be(MonthOfYear.Jan);
-            result.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Month.Should().Be(Month.Jan);
+            result.Day.Should().Be(Day.First);
         }
 
         [Fact]
@@ -122,8 +122,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.MonthOfYear.Should().Be(MonthOfYear.Dec);
-            result.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Month.Should().Be(Month.Dec);
+            result.Day.Should().Be(Day.First);
         }
 
         [Fact]
@@ -131,15 +131,15 @@ namespace TimeMachine.Tests
         {
             // Arrange
             var now = DateTime.Now;
-            var specifiedMonth = MonthOfYear.Jul;
+            var specifiedMonth = Month.Jul;
 
             // Act
             var result = GoTo.Month(specifiedMonth);
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.MonthOfYear.Should().Be(specifiedMonth);
-            result.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Month.Should().Be(specifiedMonth);
+            result.Day.Should().Be(Day.First);
         }
 
         [Fact]
@@ -153,8 +153,8 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(specifiedYear);
-            result.MonthOfYear.Should().Be(MonthOfYear.Jan);
-            result.DayOfMonth.Should().Be(DayOfMonth.First);
+            result.Month.Should().Be(Month.Jan);
+            result.Day.Should().Be(Day.First);
         }
     }
 }

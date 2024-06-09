@@ -8,14 +8,14 @@ namespace TimeMachine
         private const int MaxYear = 9999;
 
         public int Year { get; protected set; }
-        public MonthOfYear MonthOfYear { get; protected set; }
-        public DayOfMonth DayOfMonth { get; protected set; }
+        public Month Month { get; protected set; }
+        public Day Day { get; protected set; }
 
-        protected BaseDate(int year, MonthOfYear month, DayOfMonth day)
+        protected BaseDate(int year, Month month, Day day)
         {
             Year = year;
-            MonthOfYear = month;
-            DayOfMonth = day;
+            Month = month;
+            Day = day;
         }
 
         public DateTime  LetsGo()
@@ -23,10 +23,10 @@ namespace TimeMachine
             if (Year < MinYear || Year > MaxYear)
                 Year = DateTime.Now.Year;
 
-            if ((int)DayOfMonth > DateTime.DaysInMonth(Year, (int)MonthOfYear))
-                DayOfMonth = (DayOfMonth)DateTime.DaysInMonth(Year, (int)MonthOfYear);
+            if ((int)Day > DateTime.DaysInMonth(Year, (int)Month))
+                Day = (Day)DateTime.DaysInMonth(Year, (int)Month);
 
-            return new DateTime(Year, (int)MonthOfYear, (int)DayOfMonth);
+            return new DateTime(Year, (int)Month, (int)Day);
         }
     }
 }
