@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace TimeMachine.Tests
+namespace TimeMachine.Tests.TimeTravel
 {
     public class GoToTests
     {
@@ -107,7 +107,7 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.Month.Should().Be(Month.Jan);
+            result.Month.Should().Be(Month.January);
             result.Day.Should().Be(Day.First);
         }
 
@@ -122,7 +122,7 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.Month.Should().Be(Month.Dec);
+            result.Month.Should().Be(Month.December);
             result.Day.Should().Be(Day.First);
         }
 
@@ -131,7 +131,7 @@ namespace TimeMachine.Tests
         {
             // Arrange
             var now = DateTime.Now;
-            var specifiedMonth = Month.Jul;
+            var specifiedMonth = Month.July;
 
             // Act
             var result = GoTo.Month(specifiedMonth);
@@ -153,7 +153,7 @@ namespace TimeMachine.Tests
 
             // Assert
             result.Year.Should().Be(specifiedYear);
-            result.Month.Should().Be(Month.Jan);
+            result.Month.Should().Be(Month.January);
             result.Day.Should().Be(Day.First);
         }
     }

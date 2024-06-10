@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace TimeMachine.Tests
+namespace TimeMachine.Tests.TimeTravel
 {
     public class GoToFluentTests
     {
@@ -38,7 +38,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2023, 11, 5);
 
             // Act
-            var dateTime = GoTo.Year(2023).InMonth(Month.Nov).OnDay(Day.Fifth).LetsGo();
+            var dateTime = GoTo.Year(2023).InMonth(Month.November).OnDay(Day.Fifth).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -51,7 +51,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2024, 2, 29); // Leap year
 
             // Act
-            var dateTime = GoTo.Year(2024).InMonth(Month.Feb).OnDay(Day.TwentyNinth).LetsGo();
+            var dateTime = GoTo.Year(2024).InMonth(Month.February).OnDay(Day.TwentyNinth).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -64,7 +64,7 @@ namespace TimeMachine.Tests
             var expectedDate = new DateTime(2022, 3, 1);
 
             // Act
-            var dateTime = GoTo.Year(2022).InMonth(Month.Mar).OnDay(Day.First).LetsGo();
+            var dateTime = GoTo.Year(2022).InMonth(Month.March).OnDay(Day.First).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);

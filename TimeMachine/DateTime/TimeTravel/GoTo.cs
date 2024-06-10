@@ -19,10 +19,10 @@ namespace TimeMachine
             return DailyDate.Init(tomorrow.Year, (Month)tomorrow.Month, (Day)tomorrow.Day);
         }
 
-        public static MonthlyDate FirstMonth() => MonthlyDate.Init(DateTime.Now.Year, TimeMachine.Month.Jan, TimeMachine.Day.First);
-        public static MonthlyDate LastMonth() => MonthlyDate.Init(DateTime.Now.Year, TimeMachine.Month.Dec, TimeMachine.Day.First);
+        public static MonthlyDate FirstMonth() => MonthlyDate.Init(DateTime.Now.Year, TimeMachine.Month.January, TimeMachine.Day.First);
+        public static MonthlyDate LastMonth() => MonthlyDate.Init(DateTime.Now.Year, TimeMachine.Month.December, TimeMachine.Day.First);
         public static MonthlyDate Month(Month month) => MonthlyDate.Init(DateTime.Now.Year, month, TimeMachine.Day.First);
 
-        public static YearlyDate Year(int year) => YearlyDate.Init(year, TimeMachine.Month.Jan, TimeMachine.Day.First);
+        public static YearlyDate Year(int year) => YearlyDate.Init(year, TimeMachine.Month.January, TimeMachine.Day.First);
     }
 }

@@ -1,6 +1,6 @@
 using FluentAssertions;
 
-namespace TimeMachine.Tests
+namespace TimeMachine.Tests.TimeTravel
 {
     public class DailyDateTests
     {
@@ -8,9 +8,9 @@ namespace TimeMachine.Tests
         public void Init_ShouldCreateDailyDate()
         {
             // Arrange
-            int year = 2023;
-            Month month = Month.Jan;
-            Day day = Day.First;
+            const int year = 2023;
+            const Month month = Month.January;
+            const Day day = Day.First;
 
             // Act
             var dailyDate = DailyDate.Init(year, month, day);
@@ -25,8 +25,8 @@ namespace TimeMachine.Tests
         public void InMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
-            Month newMonth = Month.Feb;
+            var dailyDate = DailyDate.Init(2023, Month.January, Day.First);
+            const Month newMonth = Month.February;
 
             // Act
             var monthlyDate = dailyDate.InMonth(newMonth);
@@ -41,7 +41,7 @@ namespace TimeMachine.Tests
         public void InCurrentMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
+            var dailyDate = DailyDate.Init(2023, Month.January, Day.First);
             var currentMonth = (Month)DateTime.Now.Month;
 
             // Act
@@ -57,7 +57,7 @@ namespace TimeMachine.Tests
         public void InNextMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
+            var dailyDate = DailyDate.Init(2023, Month.January, Day.First);
             var nextMonth = (Month)DateTime.Now.AddMonths(1).Month;
 
             // Act
@@ -73,7 +73,7 @@ namespace TimeMachine.Tests
         public void InPrevMonth_ShouldReturnMonthlyDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
+            var dailyDate = DailyDate.Init(2023, Month.January, Day.First);
             var prevMonth = (Month)DateTime.Now.AddMonths(-1).Month;
 
             // Act
@@ -89,8 +89,8 @@ namespace TimeMachine.Tests
         public void DaysFromNow_ShouldReturnDailyDateWithCorrectDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
-            int days = 10;
+            var dailyDate = DailyDate.Init(2023, Month.January, Day.First);
+            const int days = 10;
             var expectedDate = dailyDate.LetsGo().AddDays(days);
 
             // Act
@@ -106,8 +106,8 @@ namespace TimeMachine.Tests
         public void DaysAgo_ShouldReturnDailyDateWithCorrectDate()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
-            int days = 10;
+            var dailyDate = DailyDate.Init(2023, Month.January, Day.First);
+            const int days = 10;
             var expectedDate = dailyDate.LetsGo().AddDays(-days);
 
             // Act
@@ -123,8 +123,8 @@ namespace TimeMachine.Tests
         public void InYear_ShouldReturnDailyDateWithNewYear()
         {
             // Arrange
-            var dailyDate = DailyDate.Init(2023, Month.Jan, Day.First);
-            int newYear = 2024;
+            var dailyDate = DailyDate.Init(2023, Month.January, Day.First);
+            const int newYear = 2024;
 
             // Act
             var newDailyDate = dailyDate.InYear(newYear);

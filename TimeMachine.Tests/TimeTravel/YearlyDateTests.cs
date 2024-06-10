@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace TimeMachine.Tests
+namespace TimeMachine.Tests.TimeTravel
 {
     public class YearlyDateTests
     {
@@ -8,9 +8,9 @@ namespace TimeMachine.Tests
         public void Init_ShouldCreateYearlyDate()
         {
             // Arrange
-            int year = 2023;
-            Month month = Month.Jan;
-            Day day = Day.First;
+            const int year = 2023;
+            const Month month = Month.January;
+            const Day day = Day.First;
 
             // Act
             var yearlyDate = YearlyDate.Init(year, month, day);
@@ -25,8 +25,8 @@ namespace TimeMachine.Tests
         public void OnDay_ShouldSetDayOfMonth()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            Day newDay = Day.Tenth;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const Day newDay = Day.Tenth;
 
             // Act
             var updatedDate = yearlyDate.OnDay(newDay);
@@ -39,8 +39,8 @@ namespace TimeMachine.Tests
         public void InMonth_ShouldSetMonthOfYear()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            Month newMonth = Month.Dec;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const Month newMonth = Month.December;
 
             // Act
             var updatedDate = yearlyDate.InMonth(newMonth);
@@ -53,8 +53,8 @@ namespace TimeMachine.Tests
         public void YearsFromNow_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            int years = 5;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const int years = 5;
             var expectedDate = yearlyDate.LetsGo().AddYears(years);
 
             // Act
@@ -70,8 +70,8 @@ namespace TimeMachine.Tests
         public void YearsAgo_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            int years = 5;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const int years = 5;
             var expectedDate = yearlyDate.LetsGo().AddYears(-years);
 
             // Act
@@ -87,8 +87,8 @@ namespace TimeMachine.Tests
         public void DaysFromNow_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            int days = 10;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const int days = 10;
             var expectedDate = yearlyDate.LetsGo().AddDays(days);
 
             // Act
@@ -104,8 +104,8 @@ namespace TimeMachine.Tests
         public void DaysAgo_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            int days = 10;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const int days = 10;
             var expectedDate = yearlyDate.LetsGo().AddDays(-days);
 
             // Act
@@ -121,8 +121,8 @@ namespace TimeMachine.Tests
         public void MonthsFromNow_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            int months = 5;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const int months = 5;
             var expectedDate = yearlyDate.LetsGo().AddMonths(months);
 
             // Act
@@ -138,8 +138,8 @@ namespace TimeMachine.Tests
         public void MonthsAgo_ShouldReturnUpdatedYearlyDate()
         {
             // Arrange
-            var yearlyDate = YearlyDate.Init(2023, Month.Jan, Day.First);
-            int months = 5;
+            var yearlyDate = YearlyDate.Init(2023, Month.January, Day.First);
+            const int months = 5;
             var expectedDate = yearlyDate.LetsGo().AddMonths(-months);
 
             // Act
