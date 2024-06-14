@@ -5,7 +5,7 @@ namespace TimeMachine
     public static class GoTo
     {
         public static DailyDate FirstDay() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, TimeMachine.Day.First);
-        public static DailyDate LastDay() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, (Day)DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+        public static DailyDate LastDay() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, TimeMachine.Day.Last);//(Day)DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
         public static DailyDate Day(Day day) => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, day);
         public static DailyDate Today() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, (Day)DateTime.Now.Day);
         public static DailyDate Yesterday()
