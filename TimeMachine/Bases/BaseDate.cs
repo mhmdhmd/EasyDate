@@ -34,19 +34,20 @@ namespace TimeMachine
             return new DateTime(Year, (int)Month, (int)Day, Hour, Minute, Second);
         }
 
-        public BaseDate At(int hour, int minute = 0, int second = 0)
+        public BaseDate At(int hours, int minutes = 0, int seconds = 0)
         {
-            Hour = Clamp(hour, 0, 23);
-            Minute = Clamp(minute, 0, 59);
-            Second = Clamp(second, 0, 59);
+            Hour = hours.Clamp(0, 23);
+            Minute = minutes.Clamp(0, 59);
+            Second = seconds.Clamp(0, 59);
             return this;
         }
-        
-        private static T Clamp<T>(T val, T min, T max) where T : IComparable<T>
+
+        public BaseDate At(DateTime datetime)
         {
-            if (val.CompareTo(min) < 0) return min;
-            if(val.CompareTo(max) > 0) return max;
-            return val;
+            Hour = datetime.Hour;
+            Minute = datetime.Minute;
+            Second = datetime.Second;
+            return this;
         }
     }
 }

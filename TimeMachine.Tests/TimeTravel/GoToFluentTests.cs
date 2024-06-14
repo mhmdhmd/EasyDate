@@ -8,10 +8,11 @@ namespace TimeMachine.Tests.TimeTravel
         public void FluentApi_CreatesCorrectDateTime_ForSpecificDayAndMonth()
         {
             // Arrange
-            var expectedDate = new DateTime(2024, 5, 15);
+            var now = DateTime.Now;
+            var expectedDate = new DateTime(2024, 5, 15).At(now.Hour, now.Minute, now.Second);
 
             // Act
-            var dateTime = GoTo.Day(Day.Fifteenth).InMonth(Month.May).LetsGo();
+            var dateTime = GoTo.Day(Day.Fifteenth).InMonth(Month.May).At(now).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -22,10 +23,10 @@ namespace TimeMachine.Tests.TimeTravel
         {
             // Arrange
             var now = DateTime.Now;
-            var expectedDate = new DateTime(now.Year, now.Month, 10);
+            var expectedDate = new DateTime(now.Year, now.Month, 10).At(now.Hour, now.Minute, now.Second);
 
             // Act
-            var dateTime = GoTo.Day(Day.Tenth).InCurrentMonth().LetsGo();
+            var dateTime = GoTo.Day(Day.Tenth).InCurrentMonth().At(now).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -35,10 +36,11 @@ namespace TimeMachine.Tests.TimeTravel
         public void FluentApi_CreatesCorrectDateTime_ForSpecificDayMonthAndYear()
         {
             // Arrange
-            var expectedDate = new DateTime(2023, 11, 5);
+            var now = DateTime.Now;
+            var expectedDate = new DateTime(2023, 11, 5).At(now.Hour, now.Minute, now.Second);
 
             // Act
-            var dateTime = GoTo.Year(2023).InMonth(Month.November).OnDay(Day.Fifth).LetsGo();
+            var dateTime = GoTo.Year(2023).InMonth(Month.November).OnDay(Day.Fifth).At(now).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -48,10 +50,11 @@ namespace TimeMachine.Tests.TimeTravel
         public void FluentApi_CreatesCorrectDateTime_ForLastDayOfMonth()
         {
             // Arrange
-            var expectedDate = new DateTime(2024, 2, 29); // Leap year
+            var now = DateTime.Now;
+            var expectedDate = new DateTime(2024, 2, 29).At(now.Hour, now.Minute, now.Second); // Leap year
 
             // Act
-            var dateTime = GoTo.Year(2024).InMonth(Month.February).OnDay(Day.TwentyNinth).LetsGo();
+            var dateTime = GoTo.Year(2024).InMonth(Month.February).OnDay(Day.TwentyNinth).At(now).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -61,10 +64,11 @@ namespace TimeMachine.Tests.TimeTravel
         public void FluentApi_CreatesCorrectDateTime_ForFirstDayOfMonthInSpecifiedYear()
         {
             // Arrange
-            var expectedDate = new DateTime(2022, 3, 1);
+            var now = DateTime.Now;
+            var expectedDate = new DateTime(2022, 3, 1).At(now.Hour, now.Minute, now.Second);
 
             // Act
-            var dateTime = GoTo.Year(2022).InMonth(Month.March).OnDay(Day.First).LetsGo();
+            var dateTime = GoTo.Year(2022).InMonth(Month.March).OnDay(Day.First).At(now).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);
@@ -75,10 +79,10 @@ namespace TimeMachine.Tests.TimeTravel
         {
             // Arrange
             var now = DateTime.Now;
-            var expectedDate = new DateTime(2024, now.Month, now.Day);
+            var expectedDate = new DateTime(2024, now.Month, now.Day).At(now.Hour, now.Minute, now.Second);
 
             // Act
-            var dateTime = GoTo.Year(2024).InMonth((Month)now.Month).OnDay((Day)now.Day).LetsGo();
+            var dateTime = GoTo.Year(2024).InMonth((Month)now.Month).OnDay((Day)now.Day).At(now).LetsGo();
 
             // Assert
             dateTime.Should().Be(expectedDate);

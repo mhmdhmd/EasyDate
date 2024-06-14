@@ -27,12 +27,12 @@ namespace TimeMachine.Tests.TimeTravel
             var lastDay = DateTime.DaysInMonth(now.Year, now.Month);
 
             // Act
-            var result = GoTo.LastDay();
+            var result = GoTo.LastDay().LetsGo();
 
             // Assert
             result.Year.Should().Be(now.Year);
-            result.Month.Should().Be((Month)now.Month);
-            result.Day.Should().Be((Day)lastDay);
+            result.Month.Should().Be(now.Month);
+            result.Day.Should().Be(lastDay);
         }
 
         [Fact]
