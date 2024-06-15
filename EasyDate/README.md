@@ -1,17 +1,8 @@
-<p align="center">
-    <a href="https://www.nuget.org/packages/EasyDate" target="blank"><img src="https://github.com/mhmdhmd/EasyDate/blob/master/EasyDate/icon.png" width="64" alt="EasyDate Logo" /></a>
-    <h1 align="center">EasyDate</h1>
-</p>
-
-<p align="center">
-<img alt="Version" src="https://img.shields.io/nuget/v/EasyDate"/>
-<img alt="Download" src="https://img.shields.io/nuget/dt/EasyDate"/>
-<img alt="Static Badge" src="https://img.shields.io/badge/license-MIT-orange"/>
-</p>
+# EasyDate
 
 **EasyDate** is a library for generating `DateTime` objects fluently in a highly readable and descriptive manner. It simplifies the creation of `DateTime` instances, enhancing code clarity and maintainability. This library is perfect for all programming scenarios, especially unit tests where readability is crucial.
 
-- [Nuget Package](https://www.nuget.org/packages/EasyDate)
+- [Github Repo](https://github.com/mhmdhmd/EasyDate)
 
 ## Features
 
@@ -57,16 +48,3 @@ using EasyDate;
 6.Weeks().Later();                              // 7/26/2024 6:20:36 PM
 2.Years().Ago();                                // 6/14/2022 6:20:36 PM
 ```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-- Fork the repository
-- Create a feature branch (`git checkout -b feature-branch`)
-- Commit your changes (`git commit -am 'Add new feature'`)
-- Push to the branch (`git push origin feature-branch`)
-- Create a new Pull Request
-
-Please make sure to update tests as appropriate.
