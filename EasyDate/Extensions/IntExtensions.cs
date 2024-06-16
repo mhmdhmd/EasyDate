@@ -22,5 +22,15 @@ namespace EasyDate
         public static MonthSteps Months(this int month) => new MonthSteps(month);
         public static YearSteps Years(this int year) => new YearSteps(year);
 
+        public static DateTime InMotn<T>(this int day, int year) where T: IMonth, new()
+        {
+            var month=new T();
+            var daysInMonth=DateTime.DaysInMonth(year, month.Number);
+
+            day = day.Clamp(1, daysInMonth);
+            year = year.Clamp(1, 9999);
+
+            return new DateTime(year, month.Number, day);
+        }
     }
 }
