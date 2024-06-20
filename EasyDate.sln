@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDate", "EasyDate\EasyDate.csproj", "{B05D232D-6AAF-4DA2-890D-9F2193DCAE5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDate", "src\EasyDate\EasyDate.csproj", "{B05D232D-6AAF-4DA2-890D-9F2193DCAE5E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDate.Tests", "EasyDate.Tests\EasyDate.Tests.csproj", "{2EBDADA8-A38F-4AE3-BA42-C69E88F3147B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDate.Tests", "test\EasyDate.Tests\EasyDate.Tests.csproj", "{2EBDADA8-A38F-4AE3-BA42-C69E88F3147B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0BB3D5DC-815C-4098-BB51-3DF62F764952}"
 EndProject
