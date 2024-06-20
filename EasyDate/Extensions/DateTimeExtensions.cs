@@ -11,5 +11,23 @@ namespace EasyDate
             seconds = seconds.Clamp(0, 59);
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, hours, minutes, seconds);
         }
+
+        public static DateTime AM(this DateTime dateTime)
+        {
+            if (dateTime.Hour >= 12)
+            {
+                return dateTime.AddHours(-12);
+            }
+            return dateTime;
+        }
+
+        public static DateTime PM(this DateTime dateTime)
+        {
+            if (dateTime.Hour < 12)
+            {
+                return dateTime.AddHours(12);
+            }
+            return dateTime;
+        }
     }
 }

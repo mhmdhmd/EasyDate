@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using EasyDate.Enums;
+using FluentAssertions;
 
 namespace EasyDate.Tests.Extensions;
 
@@ -133,5 +134,19 @@ public class IntExtensionsTests
         var expected = new DateTime(year, month, day);
 
         result.As<DateTime>().Should().Be(expected);
+    }
+
+    [Theory]
+    [InlineData(1, 1, DayPeriod.AM)]
+    [InlineData(1, 13, DayPeriod.PM)]
+    [InlineData(6, 18, DayPeriod.PM)]
+    [InlineData(12, 0, DayPeriod.AM)]
+    [InlineData(12, 12, DayPeriod.PM)]
+    public void OClock_ShouldReturnCorrectValue(int hour, int expectedHour, DayPeriod dayPeriod)
+    {
+        var result = hour.OClock(dayPeriod);
+        var expected = DateTime.Now.At(expectedHour);
+
+        result.Should().BeCloseTo(expected, TimeSpan.FromSeconds(1));
     }
 }

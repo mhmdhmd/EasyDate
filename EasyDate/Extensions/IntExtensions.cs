@@ -1,9 +1,16 @@
-﻿using System;
+﻿using EasyDate.Enums;
+using System;
 
 namespace EasyDate
 {
     public static class IntExtensions
     {
+        public static DateTime OClock(this int hour, DayPeriod dayPeriod = DayPeriod.AM)
+        {
+            if (hour < 1 || hour > 12) throw new ArgumentOutOfRangeException(nameof(hour), "The hour should be between 1 and 12");
+            var datetime = DateTime.Now.At(hour);
+            return dayPeriod == DayPeriod.AM ? datetime.AM() : datetime.PM();
+        }
         public static DateTime January(this int day, int year) => ClampedDateTime(year, 1, day);
         public static DateTime February(this int day, int year) => ClampedDateTime(year, 2, day);
         public static DateTime March(this int day, int year) => ClampedDateTime(year, 3, day);
