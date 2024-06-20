@@ -59,4 +59,18 @@ public class DayStepsTests
         // Assert
         result.Should().BeCloseTo(now.AddDays(-20), precision: TimeSpan.FromSeconds(1));
     }
+
+    [Fact]
+    public void FromNow_ShouldAddDaysCorrectly()
+    {
+        // Arrange
+        var daySteps = new DaySteps(10);
+        var now = DateTime.Now;
+
+        // Act
+        var result = daySteps.FromNow();
+
+        // Assert
+        result.Should().BeCloseTo(now.AddDays(10), precision: TimeSpan.FromSeconds(1));
+    }
 }

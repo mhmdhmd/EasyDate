@@ -10,5 +10,6 @@ namespace EasyDate
         public abstract DateTime Before(DateTime dateTime);
         public DateTime Later() => After(DateTime.Now);
         public DateTime Ago() => Before(DateTime.Now);
+        public DateTime FromNow() => After(DateTime.Now);
     }
 }

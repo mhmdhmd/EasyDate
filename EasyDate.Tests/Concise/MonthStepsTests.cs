@@ -59,4 +59,18 @@ public class MonthStepsTests
         // Assert
         result.Should().BeCloseTo(now.AddMonths(-5), precision: TimeSpan.FromSeconds(1));
     }
+
+    [Fact]
+    public void FromNow_ShouldAddMonthsCorrectly()
+    {
+        // Arrange
+        var monthSteps = new MonthSteps(10);
+        var now = DateTime.Now;
+
+        // Act
+        var result = monthSteps.FromNow();
+
+        // Assert
+        result.Should().BeCloseTo(now.AddMonths(10), precision: TimeSpan.FromSeconds(1));
+    }
 }

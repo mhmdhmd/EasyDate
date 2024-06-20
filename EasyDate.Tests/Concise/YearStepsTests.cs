@@ -59,4 +59,18 @@ public class YearStepsTests
         // Assert
         result.Should().BeCloseTo(now.AddYears(-1), precision: TimeSpan.FromSeconds(1));
     }
+
+    [Fact]
+    public void FromNow_ShouldAddDaysCorrectly()
+    {
+        // Arrange
+        var yearSteps = new YearSteps(10);
+        var now = DateTime.Now;
+
+        // Act
+        var result = yearSteps.FromNow();
+
+        // Assert
+        result.Should().BeCloseTo(now.AddYears(10), precision: TimeSpan.FromSeconds(1));
+    }
 }

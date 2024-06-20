@@ -59,4 +59,18 @@ public class WeekStepsTests
         // Assert
         result.Should().BeCloseTo(now.AddDays(-5 * 7), precision: TimeSpan.FromSeconds(1));
     }
+
+    [Fact]
+    public void FromNow_ShouldAddWeeksCorrectly()
+    {
+        // Arrange
+        var weekSteps = new WeekSteps(10);
+        var now = DateTime.Now;
+
+        // Act
+        var result = weekSteps.FromNow();
+
+        // Assert
+        result.Should().BeCloseTo(now.AddDays(10 * 7), precision: TimeSpan.FromSeconds(1));
+    }
 }

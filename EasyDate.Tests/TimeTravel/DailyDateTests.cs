@@ -134,5 +134,38 @@ namespace EasyDate.Tests.TimeTravel
             newDailyDate.Month.Should().Be(dailyDate.Month);
             newDailyDate.Day.Should().Be(dailyDate.Day);
         }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(10000)]
+        public void LetsGo_ShouldSetYearToNowIfItIsNotInRange(int year)
+        {
+            // Arrange
+            var dailyDate = DailyDate.Init(year, Month.January, Day.First);
+            var now = DateTime.Now;
+
+            // Act
+            var result = dailyDate.LetsGo();
+
+            // Assert
+            result.Year.Should().Be(now.Year);
+        }
+
+        [Theory]
+        [InlineData(25,-2,200,23,0,59)]
+        [InlineData(-1,67,40,0,59,40)]
+        public void At_ShouldSetHourMinuteSecondCorrectly(int hours, int minutes, int seconds, int expectedHours, int expectedMinutes, int expectedSeconds)
+        {
+            // Arrange
+            var dailyDate = DailyDate.Init(2002, Month.April, Day.First);
+
+            // Act
+            var result = dailyDate.At(hours, minutes, seconds);
+
+            // Assert
+            result.Hour.Should().Be(expectedHours);
+            result.Minute.Should().Be(expectedMinutes);
+            result.Second.Should().Be(expectedSeconds);
+        }
     }
 }
