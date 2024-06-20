@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>EasyDate</PackageId>
-    <Version>2.3.0-beta</Version>
+    <Version>2.3.0-beta.7</Version>
     <Authors>hmdmhmd</Authors>
     <PackageTags>datetime; unit testing; fluent interface; date generation; time manipulation; date builder; testing tools; C#</PackageTags>
     <Icon>icon.png</Icon>
