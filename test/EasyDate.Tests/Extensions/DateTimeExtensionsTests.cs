@@ -176,5 +176,35 @@ namespace EasyDate.Tests.Extensions
             // Assert
             result.Day.Should().Be(expectedDay);
         }
+        
+        [Theory]
+        [InlineData(1, 8)]
+        [InlineData(29, 7)]
+        public void NextWeek_ShouldReturnNextWeekOfGivenDate(int day, int expectedDay)
+        {
+            // Arrange
+            var date = new DateTime(2024, 2, day);
+
+            // Act
+            var result = date.NextWeek();
+
+            // Assert
+            result.Day.Should().Be(expectedDay);
+        }
+        
+        [Theory]
+        [InlineData(1, 25)]
+        [InlineData(29, 22)]
+        public void PreviousWeek_ShouldReturnPreviousWeekOfGivenDate(int day, int expectedDay)
+        {
+            // Arrange
+            var date = new DateTime(2024, 2, day);
+
+            // Act
+            var result = date.PreviousWeek();
+
+            // Assert
+            result.Day.Should().Be(expectedDay);
+        }
     }
 }
