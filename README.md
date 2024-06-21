@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://www.nuget.org/packages/EasyDate" target="blank"><img src="https://github.com/mhmdhmd/EasyDate/blob/master/EasyDate/icon.png" width="64" alt="EasyDate Logo" /></a>
+    <a href="https://www.nuget.org/packages/EasyDate" target="blank"><img src="https://github.com/mhmdhmd/EasyDate/blob/master/src/EasyDate/icon.png" width="64" alt="EasyDate Logo" /></a>
     <h1 align="center">EasyDate</h1>
 </p>
 
