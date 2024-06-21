@@ -130,7 +130,7 @@ public class IntExtensionsTests
         var method = typeof(IntExtensions).GetMethod(nameof(IntExtensions.InMotn)).MakeGenericMethod(type);
 
 
-        var result = method.Invoke(null, [day, year]);
+        var result = method.Invoke(null, new object[]{day, year});
         var expected = new DateTime(year, month, day);
 
         result.As<DateTime>().Should().Be(expected);

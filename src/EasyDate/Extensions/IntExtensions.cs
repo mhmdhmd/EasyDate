@@ -11,6 +11,9 @@ namespace EasyDate
             var datetime = DateTime.Now.At(hour);
             return dayPeriod == DayPeriod.AM ? datetime.AM() : datetime.PM();
         }
+
+        #region Mode 1
+
         public static DateTime January(this int day, int year) => ClampedDateTime(year, 1, day);
         public static DateTime February(this int day, int year) => ClampedDateTime(year, 2, day);
         public static DateTime March(this int day, int year) => ClampedDateTime(year, 3, day);
@@ -23,6 +26,25 @@ namespace EasyDate
         public static DateTime October(this int day, int year) => ClampedDateTime(year, 10, day);
         public static DateTime November(this int day, int year) => ClampedDateTime(year, 11, day);
         public static DateTime December(this int day, int year) => ClampedDateTime(year, 12, day);
+
+        #endregion
+
+        #region Mode 2
+
+        public static DateTime January(this int day) => January(day, DateTime.Now.Year);
+        public static DateTime February(this int day) => February(day, DateTime.Now.Year);
+        public static DateTime March(this int day) => March(day, DateTime.Now.Year);
+        public static DateTime April(this int day) => April(day, DateTime.Now.Year);
+        public static DateTime May(this int day) => May(day, DateTime.Now.Year);
+        public static DateTime June(this int day) => June(day, DateTime.Now.Year);
+        public static DateTime July(this int day) => July(day, DateTime.Now.Year);
+        public static DateTime August(this int day) => August(day, DateTime.Now.Year);
+        public static DateTime September(this int day) => September(day, DateTime.Now.Year);
+        public static DateTime October(this int day) => October(day, DateTime.Now.Year);
+        public static DateTime November(this int day) => November(day, DateTime.Now.Year);
+        public static DateTime December(this int day) => December(day, DateTime.Now.Year);        
+
+        #endregion
 
         public static DaySteps Days(this int day) => new DaySteps(day);
         public static WeekSteps Weeks(this int week) => new WeekSteps(week);

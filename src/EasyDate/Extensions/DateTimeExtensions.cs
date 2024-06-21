@@ -29,5 +29,17 @@ namespace EasyDate
             }
             return dateTime;
         }
+
+        #region Is[Day]
+
+        public static bool IsSaturday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Saturday;
+        public static bool IsSunday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Sunday;
+        public static bool IsMonday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Monday;
+        public static bool IsTuesday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Tuesday;
+        public static bool IsWednesday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Wednesday;
+        public static bool IsThursday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Thursday;
+        public static bool IsFriday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Friday;
+
+        #endregion
     }
 }
