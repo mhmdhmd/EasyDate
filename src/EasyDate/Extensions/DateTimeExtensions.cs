@@ -12,23 +12,10 @@ namespace EasyDate
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, hours, minutes, seconds);
         }
 
-        public static DateTime AM(this DateTime dateTime)
-        {
-            if (dateTime.Hour >= 12)
-            {
-                return dateTime.AddHours(-12);
-            }
-            return dateTime;
-        }
-
-        public static DateTime PM(this DateTime dateTime)
-        {
-            if (dateTime.Hour < 12)
-            {
-                return dateTime.AddHours(12);
-            }
-            return dateTime;
-        }
+        #region AM,PM
+        public static DateTime AM(this DateTime dateTime) => dateTime.Hour >= 12 ? dateTime.AddHours(-12) : dateTime;
+        public static DateTime PM(this DateTime dateTime) => dateTime.Hour < 12 ? dateTime.AddHours(12) : dateTime;
+        #endregion
 
         #region Is[Day]
 
@@ -41,5 +28,8 @@ namespace EasyDate
         public static bool IsFriday(this DateTime datetime) => datetime.DayOfWeek == DayOfWeek.Friday;
 
         #endregion
+
+        public static DateTime NextDay(this DateTime dateTime) => dateTime.AddDays(1);
+        public static DateTime PreviousDay(this DateTime dateTime) => dateTime.AddDays(-1);
     }
 }

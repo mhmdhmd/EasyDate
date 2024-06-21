@@ -138,13 +138,43 @@ namespace EasyDate.Tests.Extensions
             expected.Should().BeTrue();
         }
         
-        public static DateTime ChangeDayOfWeek(DateTime originalDate, DayOfWeek newDayOfWeek)
+        private DateTime ChangeDayOfWeek(DateTime originalDate, DayOfWeek newDayOfWeek)
         {
             int currentDayOfWeek = (int)originalDate.DayOfWeek;
             int targetDayOfWeek = (int)newDayOfWeek;
 
             int daysDifference = targetDayOfWeek - currentDayOfWeek;
             return originalDate.AddDays(daysDifference);
+        }
+
+        [Theory]
+        [InlineData(1, 2)]
+        [InlineData(29, 1)]
+        public void NextDay_ShouldReturnTomorrowOfGivenDate(int day, int expectedDay)
+        {
+            // Arrange
+            var date = new DateTime(2024, 2, day);
+
+            // Act
+            var result = date.NextDay();
+
+            // Assert
+            result.Day.Should().Be(expectedDay);
+        }
+        
+        [Theory]
+        [InlineData(1, 31)]
+        [InlineData(29, 28)]
+        public void PreviousDay_ShouldReturnYesterdayOfGivenDate(int day, int expectedDay)
+        {
+            // Arrange
+            var date = new DateTime(2024, 2, day);
+
+            // Act
+            var result = date.PreviousDay();
+
+            // Assert
+            result.Day.Should().Be(expectedDay);
         }
     }
 }
