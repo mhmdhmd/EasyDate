@@ -238,5 +238,19 @@ namespace EasyDate.Tests.Extensions
             result.Month.Should().Be(expectedMonth);
             result.Day.Should().Be(expectedDay);
         }
+        
+        [Fact]
+        public void NextYear_ShouldReturnNextYearOfGivenDate()
+        {
+            // Arrange
+            var date = new DateTime(2024, 1, 1);
+            var expectedYear = 2025;
+            
+            // Act
+            var result = date.NextYear();
+            
+            // Assert
+            result.Year.Should().Be(expectedYear);
+        }
     }
 }
