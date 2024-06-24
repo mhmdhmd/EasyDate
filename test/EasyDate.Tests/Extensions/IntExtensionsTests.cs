@@ -1,5 +1,4 @@
-﻿using EasyDate.Enums;
-using FluentAssertions;
+﻿using FluentAssertions;
 
 namespace EasyDate.Tests.Extensions;
 
