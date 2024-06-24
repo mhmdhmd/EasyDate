@@ -206,5 +206,21 @@ namespace EasyDate.Tests.Extensions
             // Assert
             result.Day.Should().Be(expectedDay);
         }
+
+        [Theory]
+        [InlineData(1,1,2,1)]
+        [InlineData(1,31,2,29)]
+        public void NextMonth_ShouldReturnNextMonthOfGivenDate(int month, int day, int expectedMonth, int expectedDay)
+        {
+            // Arrange
+            var date = new DateTime(2024, month, day);
+            
+            // Act
+            var result = date.NextMonth();
+            
+            // Assert
+            result.Month.Should().Be(expectedMonth);
+            result.Day.Should().Be(expectedDay);
+        }
     }
 }
