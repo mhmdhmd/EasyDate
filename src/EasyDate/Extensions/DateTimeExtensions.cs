@@ -35,5 +35,7 @@ namespace EasyDate
         public static DateTime PreviousWeek(this DateTime dateTime) => dateTime.AddDays(-1*7);
         public static DateTime NextMonth(this DateTime dateTime) => dateTime.AddMonths(1);
         public static DateTime PreviousMonth(this DateTime dateTime) => dateTime.AddMonths(-1);
+        public static DateTime NextYear(this DateTime dateTime) => dateTime.AddYears(1);
+        public static DateTime PreviousYear(this DateTime dateTime) => dateTime.AddYears(-1);
     }
 }
