@@ -222,5 +222,21 @@ namespace EasyDate.Tests.Extensions
             result.Month.Should().Be(expectedMonth);
             result.Day.Should().Be(expectedDay);
         }
+        
+        [Theory]
+        [InlineData(2,1,1,1)]
+        [InlineData(2,29,1,29)]
+        public void PreviousMonth_ShouldReturnPreviousMonthOfGivenDate(int month, int day, int expectedMonth, int expectedDay)
+        {
+            // Arrange
+            var date = new DateTime(2024, month, day);
+            
+            // Act
+            var result = date.PreviousMonth();
+            
+            // Assert
+            result.Month.Should().Be(expectedMonth);
+            result.Day.Should().Be(expectedDay);
+        }
     }
 }
