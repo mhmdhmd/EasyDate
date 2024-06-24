@@ -33,6 +33,7 @@ namespace EasyDate
         public static DateTime PreviousDay(this DateTime dateTime) => dateTime.AddDays(-1);
         public static DateTime NextWeek(this DateTime dateTime) => dateTime.AddDays(1*7);
         public static DateTime PreviousWeek(this DateTime dateTime) => dateTime.AddDays(-1*7);
-        
+        public static DateTime NextMonth(this DateTime dateTime) => dateTime.AddMonths(1);
+        public static DateTime PreviousMonth(this DateTime dateTime) => dateTime.AddMonths(-1);
     }
 }
