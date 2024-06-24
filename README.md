@@ -61,7 +61,7 @@ using EasyDate;
 using EasyDate;
 
 8.InMotn<April>(2024).At(15, 20).AM();      //  4/8/2024 3:20:00 AM
-DateTime.Now.AM();                          //  6/24/2024 4:57:42 AM
+DateTime.Now.PM();                          //  6/24/2024 4:57:42 PM
 3.Weeks().FromNow();                        //  7/15/2024 4:52:03 PM
 6.OClock(DayPeriod.PM);                     //  6/24/2024 6:00:00 PM
 9.OClock().AM();                            //  6/24/2024 9:00:00 AM
