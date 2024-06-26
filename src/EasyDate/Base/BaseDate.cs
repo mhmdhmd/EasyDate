@@ -11,9 +11,9 @@ namespace EasyDate
         public Month Month { get; protected set; }
         public Day Day { get; protected set; }
 
-        public int Hour { get; protected set; } = DateTime.Now.Hour;
-        public int Minute { get; protected set; } = DateTime.Now.Minute;
-        public int Second { get; protected set; } = DateTime.Now.Second;
+        public int Hour { get; private set; } = DateTime.Now.Hour;
+        public int Minute { get; private set; } = DateTime.Now.Minute;
+        public int Second { get; private set; } = DateTime.Now.Second;
 
         
         protected BaseDate(int year, Month month, Day day)
@@ -25,7 +25,7 @@ namespace EasyDate
 
         public DateTime  LetsGo()
         {
-            if (Year < MinYear || Year > MaxYear)
+            if (Year is < MinYear or > MaxYear)
                 Year = DateTime.Now.Year;
 
             if ((int)Day > DateTime.DaysInMonth(Year, (int)Month))
