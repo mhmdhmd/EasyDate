@@ -6,7 +6,7 @@ namespace EasyDate
     {
         public static DateTime OClock(this int hour, DayPeriod dayPeriod = DayPeriod.AM)
         {
-            if (hour < 1 || hour > 12) throw new ArgumentOutOfRangeException(nameof(hour), "The hour should be between 1 and 12");
+            if (hour is < 1 or > 12) throw new ArgumentOutOfRangeException(nameof(hour), "The hour should be between 1 and 12");
             var datetime = DateTime.Now.At(hour);
             return dayPeriod == DayPeriod.AM ? datetime.AM() : datetime.PM();
         }
@@ -50,7 +50,7 @@ namespace EasyDate
         public static MonthSteps Months(this int month) => new MonthSteps(month);
         public static YearSteps Years(this int year) => new YearSteps(year);
 
-        public static DateTime InMotn<T>(this int day, int year) where T: IMonth, new()
+        public static DateTime InMonth<T>(this int day, int year) where T: IMonth, new()
         {
             var month=new T();
             return ClampedDateTime(year, month.Number, day);

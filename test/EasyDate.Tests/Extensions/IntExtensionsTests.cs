@@ -126,7 +126,7 @@ public class IntExtensionsTests
     {
         if (!TypeMap.TryGetValue(typeName, out var type))
             throw new ArgumentException($"Type '{typeName}' not found in type map.");
-        var method = typeof(IntExtensions).GetMethod(nameof(IntExtensions.InMotn)).MakeGenericMethod(type);
+        var method = typeof(IntExtensions).GetMethod(nameof(IntExtensions.InMonth)).MakeGenericMethod(type);
 
 
         var result = method.Invoke(null, new object[]{day, year});
