@@ -5,7 +5,7 @@ namespace EasyDate
     public static class GoTo
     {
         public static DailyDate FirstDay() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, EasyDate.Day.First);
-        public static DailyDate LastDay() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, EasyDate.Day.Last);//(Day)DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+        public static DailyDate LastDay() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, EasyDate.Day.Last);
         public static DailyDate Day(Day day) => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, day);
         public static DailyDate Today() => DailyDate.Init(DateTime.Now.Year, (Month)DateTime.Now.Month, (Day)DateTime.Now.Day);
         public static DailyDate Yesterday()
