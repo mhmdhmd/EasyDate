@@ -51,7 +51,7 @@ using EasyDate;
 ```csharp
 using EasyDate;
 
-8.InMotn<April>(2024).At(15, 20).AM();      //  4/8/2024 3:20:00 AM
+8.InMonth<April>(2024).At(15, 20).AM();      //  4/8/2024 3:20:00 AM
 DateTime.Now.PM();                          //  6/24/2024 4:57:42 PM
 3.Weeks().FromNow();                        //  7/15/2024 4:52:03 PM
 6.OClock(DayPeriod.PM);                     //  6/24/2024 6:00:00 PM
@@ -64,6 +64,6 @@ GoTo.Month(Month.February)
     .LetsGo().IsWednesday();                //  is wednesday: False
 4.December(2024).NextDay();                 //  12/5/2024 12:00:00 AM
 GoTo.Day(Day.Eighth).LetsGo().NextDay();    //  6/9/2024 4:52:03 PM
-23.InMotn<March>(2012).PreviousMonth();     //  2/23/2012 12:00:00 AM
+23.InMonth<March>(2012).PreviousMonth();    //  2/23/2012 12:00:00 AM
 GoTo.Year(2000).LetsGo().NextYear();        //  1/1/2001 4:52:03 PM
 ```
